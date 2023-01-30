@@ -8,7 +8,15 @@ project(Chess)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(NO_OUTPUT_DIRS)
 
-add_executable(${PROJECT_NAME} main.cpp)
+add_executable(${PROJECT_NAME} 
+main.cpp
+Figure.cpp
+Rook.cpp
+Pawn.cpp
+King.cpp
+Knight.cpp
+Queen.cpp
+Bishop.cpp)
 target_link_libraries(Chess ${CONAN_LIBS})
 
 file(COPY
