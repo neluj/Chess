@@ -16,7 +16,8 @@ Pawn.cpp
 King.cpp
 Knight.cpp
 Queen.cpp
-Bishop.cpp)
+Bishop.cpp
+FigureManager.cpp)
 target_link_libraries(Chess ${CONAN_LIBS})
 
 file(COPY

@@ -1,7 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Rook.hpp"
-#include "Pawn.hpp"
-#include "Bishop.hpp"
+#include "FigureManager.hpp"
 
 using namespace sf;
 Sprite boardSprite;
@@ -19,8 +17,7 @@ int main()
     boardTexture.loadFromFile("images/board.png");
     loadBoard(boardTexture);
 
-    Bishop witheRook(Figure::WHITE, std::pair<int, int>(2, 7));
-
+    FigureManager figureManager;
 
     RenderWindow window(VideoMode(512, 520), "The Chess! (press SPACE)");
 
@@ -31,7 +28,10 @@ int main()
         {}
         window.clear();
         window.draw(boardSprite);
-        window.draw(*witheRook.getSprite());
+        for(std::shared_ptr<Figure> fig : figureManager.getFigures())
+        {
+            window.draw(*fig->getSprite());
+        }
         window.display();
     }
 
