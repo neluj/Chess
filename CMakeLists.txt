@@ -9,18 +9,18 @@ include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(NO_OUTPUT_DIRS)
 
 add_executable(${PROJECT_NAME} 
-main.cpp
-Figure.cpp
-Rook.cpp
-Pawn.cpp
-King.cpp
-Knight.cpp
-Queen.cpp
-Bishop.cpp
-FigureManager.cpp
-ChessManager.cpp)
+src/main.cpp
+src/Figure.cpp
+src/Rook.cpp
+src/Pawn.cpp
+src/King.cpp
+src/Knight.cpp
+src/Queen.cpp
+src/Bishop.cpp
+src/FigureManager.cpp
+src/ChessManager.cpp)
 target_link_libraries(Chess ${CONAN_LIBS})
 
 file(COPY
-images
+src/images
 DESTINATION ${CMAKE_BINARY_DIR})
