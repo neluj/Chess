@@ -6,8 +6,8 @@ mkdir bin
 
 cd bin
 
-conan install ../src
+conan install ..
 
-cmake -DCMAKE_BUILD_TYPE=Debug ../src
+cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 make
