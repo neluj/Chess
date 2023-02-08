@@ -4,7 +4,11 @@ add_executable(movements_test
 MovementsUp.cpp
 MovementsDown.cpp
 MovementsLeft.cpp
-MovementsRight.cpp)
+MovementsRight.cpp
+MovementsUpLeft.cpp
+MovementsUpRight.cpp
+MovementsDownRight.cpp
+MovementsDownLeft.cpp)
 
 target_link_libraries(movements_test
  PUBLIC

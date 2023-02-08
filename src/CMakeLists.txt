@@ -9,7 +9,8 @@ Bishop.cpp
 FigureManager.cpp
 ChessManager.cpp
 MovementsSides.cpp
-MovementsPositionState.cpp)
+MovementsPositionState.cpp
+MovementsDiagonal.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
