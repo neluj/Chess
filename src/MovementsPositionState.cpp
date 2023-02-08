@@ -19,30 +19,26 @@ std::shared_ptr<Figure> MovementsPositionState::getFigureOnPosition(const std::p
     return figureOnPosition;
 }
 
-std::shared_ptr<Figure> MovementsPositionState::returnNullValue(std::pair<int,int> & newPosition)
+std::pair<int,int> MovementsPositionState::returnNullValue()
 {
-    newPosition = std::pair<int, int>(-1,-1);    
-    return nullptr;
+    return std::pair<int, int>(-1,-1);
 }
 
-std::shared_ptr<Figure> MovementsPositionState::checkPositionState(const std::shared_ptr<Figure> figure,const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::pair<int,int> & calculatedPosition, std::pair<int,int> & newPosition)
+std::pair<int,int> MovementsPositionState::checkPositionState(const std::shared_ptr<Figure> figure,const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::pair<int,int> & calculatedPosition)
 { 
     std::shared_ptr<Figure> figureOnPosition{nullptr};
     if(!positionExist(calculatedPosition))
-        return returnNullValue(newPosition);  
+        return returnNullValue();  
     
     figureOnPosition = getFigureOnPosition(calculatedPosition, figuresOnBoard);
     if(figureOnPosition==nullptr )
     {
-        newPosition = calculatedPosition;
-        return figureOnPosition;
+        return calculatedPosition;
     }
 
     else if(figureOnPosition->getColor() != figure->getColor())
     {
-        newPosition = calculatedPosition;
-        return figureOnPosition;
+        return calculatedPosition;
     }
-
-    return returnNullValue(newPosition);   
+    return returnNullValue();   
 }
