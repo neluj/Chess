@@ -7,10 +7,13 @@ Knight.cpp
 Queen.cpp
 Bishop.cpp
 FigureManager.cpp
-ChessManager.cpp)
+ChessManager.cpp
+MovementsBasic.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
 file(COPY
 images
 DESTINATION ${CMAKE_BINARY_DIR})
+
+target_include_directories(src PUBLIC include ) 

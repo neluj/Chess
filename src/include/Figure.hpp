@@ -14,8 +14,11 @@ public:
 
     Figure(Color color, Type type, const std::pair<int, int> & pos);
     virtual ~Figure(){}
-    //virtual std::vector<std::pair<int, int>> getPossibleMovements() = 0;
+    //virtual std::vector<std::pair<int, int>> getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) = 0;
     virtual void updatePosition(int x, int y);
+    virtual std::pair<int, int> getPosition();
+    virtual Type getType();
+    virtual Color getColor();
 
     //TODO ver si es virtual
     virtual std::shared_ptr<Sprite> getSprite();
@@ -23,17 +26,11 @@ public:
 
 protected:
 
-    virtual bool positionExist(const std::pair<int, int>  &position);
-    virtual std::pair<int, int> getUpPosition();
-    virtual std::pair<int, int> getDownPosition();
-    virtual std::pair<int, int> getLeftPosition();
-    virtual std::pair<int, int> getRightPosition();
-    virtual std::pair<int, int> getDiagonalUpLeft();
-    virtual std::pair<int, int> getDiagonalUpRight();
-    virtual std::pair<int, int> getDiagonalDownLeft();
-    virtual std::pair<int, int> getDiagonalDownRight();
     Texture figureTexture;
     std::shared_ptr<Sprite> sprite{nullptr};
     std::pair<int, int> position;
+    // TODO sprite type guardar de otra manera
     int size;
+    const Color color;
+    Type type;
 };
