@@ -10,7 +10,8 @@ FigureManager.cpp
 ChessManager.cpp
 MovementsSides.cpp
 MovementsPositionState.cpp
-MovementsDiagonal.cpp)
+MovementsDiagonal.cpp
+MovementsKnight.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
