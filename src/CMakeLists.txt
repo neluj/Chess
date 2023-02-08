@@ -7,7 +7,8 @@ Knight.cpp
 Queen.cpp
 Bishop.cpp
 FigureManager.cpp
-ChessManager.cpp)
+ChessManager.cpp
+MovementsBasic.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 

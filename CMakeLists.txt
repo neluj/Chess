@@ -8,6 +8,8 @@ project(Chess)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup(NO_OUTPUT_DIRS)
 
+enable_testing()
+
 add_subdirectory(src)
 add_subdirectory(test)
 
