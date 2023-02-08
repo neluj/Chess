@@ -8,7 +8,7 @@ Queen.cpp
 Bishop.cpp
 FigureManager.cpp
 ChessManager.cpp
-MovementsBasic.cpp)
+MovementsSides.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 

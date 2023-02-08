@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "MovementsBasic.hpp"
+#include "MovementsSides.hpp"
 #include "Pawn.hpp"
 #include "FigureManager.hpp"
 
@@ -8,7 +8,7 @@ TEST(Down, PositionNotExits)
     std::pair<int,int> expectedPosition(-1, -1);
     std::pair<int,int> actual;
     std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(Figure::WHITE, std::pair<int, int>(5, 7));
-    MovementsBasic movementsBasic;
+    MovementsSides movementsBasic;
     FigureManager figureManager;
     figureManager.setInitialState();
     std::shared_ptr<Figure> actualFigure = movementsBasic.getDownPosition(pawn,figureManager.getFigures(), actual);
@@ -21,7 +21,7 @@ TEST(Down, rivalOnPosition)
     std::pair<int,int> expectedPosition(3, 1);
     std::pair<int,int> actual;
     std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(Figure::WHITE, std::pair<int, int>(3, 0));
-    MovementsBasic movementsBasic;
+    MovementsSides movementsBasic;
     FigureManager figureManager;
     figureManager.setInitialState();
     std::shared_ptr<Figure> actualFigure = movementsBasic.getDownPosition(pawn,figureManager.getFigures(), actual);
@@ -34,7 +34,7 @@ TEST(Down, teamOnPosition)
     std::pair<int,int> expectedPosition(-1, -1);
     std::pair<int,int> actual;
     std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(Figure::WHITE, std::pair<int, int>(3, 6));
-    MovementsBasic movementsBasic;
+    MovementsSides movementsBasic;
     FigureManager figureManager;
     figureManager.setInitialState();
     std::shared_ptr<Figure> actualFigure = movementsBasic.getDownPosition(pawn,figureManager.getFigures(), actual);
@@ -47,7 +47,7 @@ TEST(Down, emptyPosition)
     std::pair<int,int> expectedPosition(3, 4);
     std::pair<int,int> actual;
     std::shared_ptr<Pawn> pawn = std::make_shared<Pawn>(Figure::WHITE, std::pair<int, int>(3, 3));
-    MovementsBasic movementsBasic;
+    MovementsSides movementsBasic;
     FigureManager figureManager;
     figureManager.setInitialState();
     std::shared_ptr<Figure> actualFigure = movementsBasic.getDownPosition(pawn,figureManager.getFigures(), actual);
