@@ -8,7 +8,8 @@ MovementsRight.cpp
 MovementsUpLeft.cpp
 MovementsUpRight.cpp
 MovementsDownRight.cpp
-MovementsDownLeft.cpp)
+MovementsDownLeft.cpp
+MovementsPawn.cpp)
 
 target_link_libraries(movements_test
  PUBLIC

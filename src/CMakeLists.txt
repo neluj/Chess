@@ -11,7 +11,8 @@ ChessManager.cpp
 MovementsSides.cpp
 MovementsPositionState.cpp
 MovementsDiagonal.cpp
-MovementsKnight.cpp)
+MovementsKnight.cpp
+MovementsPawn.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
