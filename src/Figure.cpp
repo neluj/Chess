@@ -12,7 +12,7 @@ Figure::Figure(Color col, Type tp, const std::pair<int, int> & pos) :
     updatePosition(position.first, position.second);    
 }
 
-std::shared_ptr<Sprite> Figure::getSprite()
+std::shared_ptr<Sprite> Figure::getSprite() const
 {
     return sprite;
 }
@@ -23,16 +23,16 @@ void Figure::updatePosition(int x, int y)
     sprite->setPosition(size * position.first, size * position.second); 
 }
 
-std::pair<int, int> Figure::getPosition()
+std::pair<int, int> Figure::getPosition() const
 {
     return position;
 }
 
-Figure::Type Figure::getType()
+Figure::Type Figure::getType() const
 {
     return type;
 }
-Figure::Color Figure::getColor()
+Figure::Color Figure::getColor() const
 {
     return color;
 }

@@ -8,5 +8,6 @@ public:
 
     Bishop(Color color, const std::pair<int, int> & pos);
     ~Bishop(){}
+    std::shared_ptr<Figure> clone() const override;
 
 };

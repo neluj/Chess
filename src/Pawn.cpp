@@ -16,3 +16,7 @@ bool Pawn::isStartPosition()
         return true;
     return false;
 }
+std::shared_ptr<Figure> Pawn::clone() const
+{
+    return std::make_shared<Pawn>(*this);
+}
