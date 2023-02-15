@@ -1,24 +1,21 @@
 #include "MovementsDiagonal.hpp"
+#include "MovementsPositionState.hpp"
 
-std::pair<int,int> MovementsDiagonal::getDiagonalUpLeft(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::pair<int,int> MovementsDiagonal::getDiagonalUpLeft(const std::pair<int,int> & position)
 {
-    std::pair<int, int> upLeftPosition(figure->getPosition().first-1, figure->getPosition().second-1);
-    return positionState.checkPositionState(figure, figuresOnBoard, upLeftPosition);
+    return std::pair<int, int> (position.first-1, position.second-1);
 }
-std::pair<int,int> MovementsDiagonal::getDiagonalUpRight(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::pair<int,int> MovementsDiagonal::getDiagonalUpRight(const std::pair<int,int> & position)
 {
-    std::pair<int, int> upRightPosition(figure->getPosition().first+1, figure->getPosition().second-1);
-    return positionState.checkPositionState(figure, figuresOnBoard, upRightPosition);
+    return std::pair<int, int> (position.first+1, position.second-1);
 }
-std::pair<int,int> MovementsDiagonal::getDiagonalDownLeft(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::pair<int,int> MovementsDiagonal::getDiagonalDownLeft(const std::pair<int,int> & position)
 {
-    std::pair<int, int> downLeftPosition(figure->getPosition().first-1, figure->getPosition().second+1);
-    return positionState.checkPositionState(figure, figuresOnBoard, downLeftPosition);
+    return std::pair<int, int> (position.first-1, position.second+1);
 }
-std::pair<int,int> MovementsDiagonal::getDiagonalDownRight(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::pair<int,int> MovementsDiagonal::getDiagonalDownRight(const std::pair<int,int> & position)
 {
-    std::pair<int, int> downRightPosition(figure->getPosition().first+1, figure->getPosition().second+1);
-    return positionState.checkPositionState(figure, figuresOnBoard, downRightPosition);
+    return std::pair<int, int> (position.first+1, position.second+1);
 }
 
 

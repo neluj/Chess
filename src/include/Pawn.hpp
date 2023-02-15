@@ -10,8 +10,5 @@ public:
     ~Pawn(){}
     std::shared_ptr<Figure> clone() const override;
     //virtual std::vector<std::pair<int, int>> getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
-private:
-
-    bool isStartPosition();
 
 };

@@ -1,13 +1,13 @@
 #pragma once
-#include "MovementsPositionState.hpp"
+#include <utility>
 
 class MovementsDiagonal
 {
 public:
-    std::pair<int,int> getDiagonalUpLeft   (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::pair<int,int> getDiagonalUpRight  (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::pair<int,int> getDiagonalDownLeft (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::pair<int,int> getDiagonalDownRight(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);  
-private:
-    MovementsPositionState positionState;
+
+    std::pair<int,int> getDiagonalUpLeft   (const std::pair<int,int> & position);
+    std::pair<int,int> getDiagonalUpRight  (const std::pair<int,int> & position);
+    std::pair<int,int> getDiagonalDownLeft (const std::pair<int,int> & position);
+    std::pair<int,int> getDiagonalDownRight(const std::pair<int,int> & position);  
+
 };

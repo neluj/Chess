@@ -9,10 +9,12 @@ Bishop.cpp
 FigureManager.cpp
 ChessManager.cpp
 MovementsSides.cpp
+MovementsUpDown.cpp
 MovementsPositionState.cpp
 MovementsDiagonal.cpp
 MovementsKnight.cpp
-MovementsPawn.cpp)
+MovementsPawn.cpp
+MovementsSidesDeep.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
