@@ -51,28 +51,29 @@ std::vector<std::pair<int,int>> MovementsPawn::getWhiteDiagonals(const std::shar
 {
     return getDiagonalsPositions(&MovementsDiagonal::getDiagonalUpLeft, &MovementsDiagonal::getDiagonalUpRight, pawn, figuresOnBoard);
 }
+
 std::vector<std::pair<int,int>> MovementsPawn::getBlackDiagonals(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getDiagonalsPositions(&MovementsDiagonal::getDiagonalDownLeft, &MovementsDiagonal::getDiagonalDownRight, pawn, figuresOnBoard);
 }
 
-// DELETE borrar returns del template
 std::vector<std::pair<int,int>> MovementsPawn::getWhiteFronts(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getFrontPositions(&MovementsPawn::isWhiteInitialPosition, &MovementsUpDown::getUpPosition, pawn, figuresOnBoard);
-    //return frontPositions<MovementsUpDown, &MovementsUpDown::getUpPosition, MovementsPawn, &MovementsPawn::isWhiteInitialPosition >(movementsUpDown, *this, pawn, figuresOnBoard);
 }
+
 std::vector<std::pair<int,int>> MovementsPawn::getBlackFronts(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getFrontPositions(&MovementsPawn::isBlackInitialPosition, &MovementsUpDown::getDownPosition, pawn, figuresOnBoard);
-    //return frontPositions<MovementsUpDown, &MovementsUpDown::getDownPosition, MovementsPawn, &MovementsPawn::isBlackInitialPosition >(movementsUpDown, *this, pawn, figuresOnBoard);
 }
+
 bool MovementsPawn::isWhiteInitialPosition(const std::pair<int,int> &position)
 {
     if(position.second == 6)
         return true;
     return false;    
 }
+
 bool MovementsPawn::isBlackInitialPosition(const std::pair<int,int> &position)
 {
     if(position.second == 1)
