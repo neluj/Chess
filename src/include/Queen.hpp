@@ -6,7 +6,7 @@ class Queen :
 {
 public:
 
-    Queen(Color color, const std::pair<int, int> & pos);
+    Queen(const Color & color, const std::pair<int, int> & pos);
     ~Queen(){}
     std::shared_ptr<Figure> clone() const override;
 

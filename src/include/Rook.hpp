@@ -6,7 +6,7 @@ class Rook :
 {
 public:
 
-    Rook(Color color, const std::pair<int, int> & pos);
+    Rook(const Color & color, const std::pair<int, int> & pos);
     ~Rook(){}
     std::shared_ptr<Figure> clone() const override;
 };

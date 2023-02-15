@@ -1,10 +1,11 @@
 #include "Figure.hpp"
 
-Figure::Figure(Color col, Type tp, const std::pair<int, int> & pos) :
-    position(pos), color(col)
+Figure::Figure(const Color & color, const Type & type, const std::pair<int, int> & pos) :
+    position(pos), 
+    color(color),
+    type(type)
 {
     size = 64;
-    type =tp;
     figureTexture.loadFromFile("images/figures.png");
     sprite = std::make_shared<Sprite>();
     sprite->setTexture(figureTexture);
