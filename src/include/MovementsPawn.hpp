@@ -7,6 +7,7 @@ class Pawn;
 class Figure;
 class MovementsUpDown;
 class MovementsPositionState;
+class MovementsDiagonal;
 
 
 class MovementsPawn
@@ -27,9 +28,6 @@ private:
     
     std::vector<std::pair<int,int>> getWhiteDiagonals
     (const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-
-    
-    
     
     std::vector<std::pair<int,int>> getBlackDiagonals
     (const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
@@ -48,7 +46,14 @@ private:
     std::pair<int,int>  (MovementsUpDown::*frontMovement  )(std::pair<int,int>), 
     const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
 
+    std::vector<std::pair<int,int>> getDiagonalsPositions
+    (std::pair<int,int>  (MovementsDiagonal::*diagonalLeft   )(const std::pair<int,int>&), 
+     std::pair<int,int>  (MovementsDiagonal::*diagonalRight  )(const std::pair<int,int>&), 
+     const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
+
+    // TODO pasar por parametro desde el metodo principal
     std::shared_ptr<MovementsUpDown> movementsUpDown;
     std::shared_ptr<MovementsPositionState> movementsPositionState;
+    std::shared_ptr<MovementsDiagonal> movementsDiagonal;
 
 };
