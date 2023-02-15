@@ -14,12 +14,12 @@ std::vector<std::pair<int,int>> onDeep(const std::shared_ptr<MovementType> movem
     bool empassant = false;
 
     MovementsPositionState positionState;
-    while(positionState.checkPositionState(hitoteticFigure,figuresOnBoard,newPosition).first != -1 && empassant==false)
+    while(positionState.positionExist(newPosition) && !positionState.isTeamFigureOnPosition(figure, figuresOnBoard, newPosition) && empassant==false)
     {
         onDeep.push_back(newPosition);
         hitoteticFigure->updatePosition(newPosition.first, newPosition.second);
         newPosition = ((*movementType).*MovementMethod)(hitoteticFigure->getPosition());
-        std::shared_ptr<Figure> figureOnNewPosition = positionState.getFigureOnPosition(newPosition,figuresOnBoard);
+        std::shared_ptr<Figure> figureOnNewPosition = positionState.getFigureOnPosition(newPosition, figuresOnBoard);
         if(figureOnNewPosition != nullptr)
         if(figureOnNewPosition->getColor() != figure->getColor())
         {
