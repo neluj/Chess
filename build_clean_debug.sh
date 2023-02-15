@@ -11,3 +11,5 @@ conan install ..
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 make
+
+gdb bin/test/movements_test
