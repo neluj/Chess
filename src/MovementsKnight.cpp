@@ -51,7 +51,13 @@ std::vector<std::pair<int,int>> MovementsKnight::getMovements(const std::shared_
 void MovementsKnight::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<Knight> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     if(movementsPositionState->positionExist(newPosition))
+    {
         if(movementsPositionState->getFigureOnPosition(newPosition,figuresOnBoard)!=nullptr)
+        {
             if(movementsPositionState->getFigureOnPosition(newPosition,figuresOnBoard)->getColor() != figure->getColor())
                 movements.push_back(newPosition);
+        }
+        else
+            movements.push_back(newPosition);
+    }
 }

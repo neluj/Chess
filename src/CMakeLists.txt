@@ -14,7 +14,10 @@ MovementsPositionState.cpp
 MovementsDiagonal.cpp
 MovementsKnight.cpp
 MovementsPawn.cpp
-MovementsSidesDeep.cpp)
+MovementsQueen.cpp
+MovementsRook.cpp
+MovementsBishop.cpp
+MovementsKing.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 

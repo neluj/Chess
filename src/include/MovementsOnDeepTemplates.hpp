@@ -2,6 +2,10 @@
 #include "MovementsPositionState.hpp"
 #include "Figure.hpp"
 
+//Given a movement, iterates until 
+//1.-the end of the board,
+//2.-A team mate is founded,
+//3.-An enemy is founded and it empassad,
 //TODO refactorizar nombres y metodo
 template<typename MovementType, std::pair<int,int>(MovementType::*MovementMethod)(const std::pair<int,int> & )>
 std::vector<std::pair<int,int>> onDeep(const std::shared_ptr<MovementType> movementType, const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)

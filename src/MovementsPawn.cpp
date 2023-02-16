@@ -21,7 +21,6 @@ std::vector<std::pair<int,int>> MovementsPawn::getMovements(const std::shared_pt
     return std::vector<std::pair<int,int>>();
 
 }
-// TODO test return vector sizes
 // TODO unificar positions y movements!!!! O diferenciarlos claramente, posicion puede ser cualquier cosa y movements solo a las posiciones que se pueden acceder
 std::vector<std::pair<int,int>> MovementsPawn::getWhiteMovements(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
@@ -81,8 +80,6 @@ bool MovementsPawn::isBlackInitialPosition(const std::pair<int,int> &position)
     return false;
 }
 
-//TODO para hacer push en los vectores, hacer como en el de los cavallos, en vez de comprobar una y otra vez
-// TODO test return vector sizes
 std::vector<std::pair<int,int>> MovementsPawn::getFrontPositions
 (bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &),
 std::pair<int,int>  (MovementsUpDown::*frontMovement  )(const std::pair<int,int> &), 
