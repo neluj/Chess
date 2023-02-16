@@ -84,8 +84,8 @@ bool MovementsPawn::isBlackInitialPosition(const std::pair<int,int> &position)
 //TODO para hacer push en los vectores, hacer como en el de los cavallos, en vez de comprobar una y otra vez
 // TODO test return vector sizes
 std::vector<std::pair<int,int>> MovementsPawn::getFrontPositions
-(bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &position),
-std::pair<int,int>  (MovementsUpDown::*frontMovement  )(std::pair<int,int>), 
+(bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &),
+std::pair<int,int>  (MovementsUpDown::*frontMovement  )(const std::pair<int,int> &), 
 const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> movements;

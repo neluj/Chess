@@ -42,8 +42,8 @@ private:
     bool isBlackInitialPosition(const std::pair<int,int> &position);
 
     std::vector<std::pair<int,int>> getFrontPositions
-    (bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &position),
-    std::pair<int,int>  (MovementsUpDown::*frontMovement  )(std::pair<int,int>), 
+    (bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &),
+    std::pair<int,int>  (MovementsUpDown::*frontMovement  )(const std::pair<int,int> &), 
     const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
 
     std::vector<std::pair<int,int>> getDiagonalsPositions

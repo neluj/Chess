@@ -3,7 +3,7 @@
 #include "Figure.hpp"
 
 //TODO refactorizar nombres y metodo
-template<typename MovementType, std::pair<int,int>(MovementType::*MovementMethod)(std::pair<int,int>)>
+template<typename MovementType, std::pair<int,int>(MovementType::*MovementMethod)(const std::pair<int,int> & )>
 std::vector<std::pair<int,int>> onDeep(const std::shared_ptr<MovementType> movementType, const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> onDeep;

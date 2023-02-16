@@ -15,10 +15,10 @@ class MovementsSidesDeep
 public:
     MovementsSidesDeep();
     //Returns figure if the movements ends withempassant
-    std::vector<std::pair<int,int>> getUpPositions       (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::vector<std::pair<int,int>> getDownPositions     (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::vector<std::pair<int,int>> getLeftPositions     (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
-    std::vector<std::pair<int,int>> getRightPositions    (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
+    std::vector<std::pair<int,int>> getUpPositions       (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) const;
+    std::vector<std::pair<int,int>> getDownPositions     (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) const;
+    std::vector<std::pair<int,int>> getLeftPositions     (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) const;
+    std::vector<std::pair<int,int>> getRightPositions    (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) const;
 
 private:
 

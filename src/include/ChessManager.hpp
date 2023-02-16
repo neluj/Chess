@@ -7,8 +7,7 @@ class ChessManager
 {
 public:
 
-    void run();
-    std::pair<int,int> getPositionOnBoard(int x, int y);
+    void run() ;
 
 private:
 
