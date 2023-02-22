@@ -10,9 +10,13 @@ class Figure;
 class FigureImage
 {
 public:
+
     FigureImage(const std::shared_ptr<Figure> figure);
+    const std::shared_ptr<sf::Sprite> getSprite();
+    bool containsPosition(int x, int y);
 
 private:
+
     std::shared_ptr<Figure> figure{nullptr};
     std::shared_ptr<sf::Sprite> sprite{nullptr};
     std::shared_ptr<sf::Texture> texture{nullptr};

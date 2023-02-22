@@ -1,6 +1,14 @@
-#include "ChessManager.hpp"
+#include "Game.hpp"
+#include "FigureRenderizer.hpp"
 
-void ChessManager::run()
+Game::Game()
+{
+    board            =  std::make_shared<Board>(); 
+    figureRenderizer =  std::make_unique<FigureRenderizer>(board);
+}
+
+
+void Game::MainLoop()
 {
     Sprite boardSprite;
 
@@ -31,21 +39,30 @@ void ChessManager::run()
         
         window.clear();
         window.draw(boardSprite);
-        for(std::shared_ptr<Figure> fig : figureManager.getFigures())
-        {
-            window.draw(*fig->getSprite());
-        }
+        figureRenderizer->draw(window);
         window.display();
     }   
 }
 
-void ChessManager::mouseLeftClick(int x, int y)
+
+void Game::mouseLeftClick(int x, int y)
 {
-    for(std::shared_ptr<Figure> fig : figureManager.getFigures())
-    {
-        if (fig->getSprite()->getGlobalBounds().contains(x,y))
-        {
-            fig->updatePosition(5,5);
-        } 
-    }       
+    //if(figureIsSelected)
+    //{
+    //    if()
+    //    figureManager.updatePosition(...);
+    //}
+    //else 
+    //{
+    //    figureManager.selecFigure(...);
+    //}
+    //
+    //figureManager.updatePosition();
+    //for(std::shared_ptr<Figure> figImag : figureManager.getFigureImages())
+    //{
+    //    if (figImag->getSprite()->getGlobalBounds().contains(x,y))
+    //    {
+    //        figImag->updatePosition(5,5);
+    //    } 
+    //}       
 }
