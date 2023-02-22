@@ -1,9 +1,9 @@
-#include "ChessManager.hpp"
+#include "Game.hpp"
 
 int main()
 {
 
-    ChessManager chessManager;
-    chessManager.run();
+    Game game;
+    game.MainLoop();
     return 0;
 }

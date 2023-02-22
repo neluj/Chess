@@ -1,4 +1,8 @@
 add_library(src
+Game.cpp
+Board.cpp
+FigureRenderizer.cpp
+FigureImage.cpp
 Figure.cpp
 Rook.cpp
 Pawn.cpp
@@ -6,8 +10,6 @@ King.cpp
 Knight.cpp
 Queen.cpp
 Bishop.cpp
-FigureManager.cpp
-ChessManager.cpp
 MovementsSides.cpp
 MovementsUpDown.cpp
 MovementsPositionState.cpp

@@ -1,13 +1,15 @@
-#include "FigureManager.hpp"
+#include "Board.hpp"
 
-FigureManager::FigureManager()
+Board::Board()
 {
     figures.reserve(32);
     setInitialState();
 }
 
-void FigureManager::setInitialState()
+void Board::setInitialState()
 {
+    figures.reserve(32);
+
     figures.push_back(std::make_shared<King>(Figure::WHITE, std::pair<int, int>(4, 7)));
     figures.push_back(std::make_shared<King>(Figure::BLACK, std::pair<int, int>(4, 0)));
 
@@ -46,10 +48,10 @@ void FigureManager::setInitialState()
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::pair<int, int>(5, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::pair<int, int>(6, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::pair<int, int>(7, 1)));
+
 }
 
-const std::vector<std::shared_ptr<Figure>> & FigureManager::getFigures() const
+const std::vector<std::shared_ptr<Figure>> & Board::getFigures() const
 {
     return figures;
 }
- 

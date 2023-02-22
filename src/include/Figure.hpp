@@ -1,10 +1,8 @@
 #pragma once
-#include <SFML/Graphics.hpp>
 #include <memory>
 #include <utility>
 
-using namespace sf;
-class Figure
+class Figure 
 {
 public:
 
@@ -20,16 +18,11 @@ public:
     virtual std::pair<int, int> getPosition() const;
     virtual Type getType() const;
     virtual Color getColor() const;
-    virtual std::shared_ptr<Sprite> getSprite() const;
 
 
 protected:
 
-    Texture figureTexture;
-    std::shared_ptr<Sprite> sprite{nullptr};
     std::pair<int, int> position;
-    // TODO sprite type guardar de otra manera
-    int size;
     const Color color;
     Type type;
 };

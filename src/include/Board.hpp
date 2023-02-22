@@ -9,11 +9,11 @@
 
 #include <vector>
 
-class FigureManager 
+class Board 
 {
 
 public:
-    FigureManager();
+    Board();
 
     //r, n, b, q, k, b, n, r
     //p, p, p, p, p, p, p, p
@@ -27,7 +27,7 @@ public:
     const std::vector<std::shared_ptr<Figure>> & getFigures() const;
     
 private:
-
-    std::vector<std::shared_ptr<Figure>> figures;    
+ 
+    std::vector<std::shared_ptr<Figure>> figures; 
 
 };

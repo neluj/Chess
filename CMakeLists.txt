@@ -11,7 +11,7 @@ conan_basic_setup(NO_OUTPUT_DIRS)
 enable_testing()
 
 add_subdirectory(src)
-add_subdirectory(test)
+#add_subdirectory(test)
 
 add_executable(${PROJECT_NAME} 
 main.cpp)

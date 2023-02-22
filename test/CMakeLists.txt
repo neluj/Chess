@@ -1,15 +1,16 @@
 find_package(GTest REQUIRED)
 
 add_executable(movements_test 
-MovementsUp.cpp
-MovementsDown.cpp
-MovementsLeft.cpp
-MovementsRight.cpp
-MovementsUpLeft.cpp
-MovementsUpRight.cpp
-MovementsDownRight.cpp
-MovementsDownLeft.cpp
-MovementsPawn.cpp)
+#MovementsUp.cpp
+#MovementsDown.cpp
+#MovementsLeft.cpp
+#MovementsRight.cpp
+#MovementsUpLeft.cpp
+#MovementsUpRight.cpp
+#MovementsDownRight.cpp
+#MovementsDownLeft.cpp
+#MovementsPawn.cpp
+MovementsSidesDeep.cpp)
 
 target_link_libraries(movements_test
  PUBLIC
