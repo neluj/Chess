@@ -1,13 +1,17 @@
 #pragma once
 
-#include "King.hpp"
-#include "Rook.hpp"
-#include "Pawn.hpp"
-#include "Knight.hpp"
-#include "Queen.hpp"
-#include "Bishop.hpp"
-
+#include <memory>
 #include <vector>
+
+
+class MovementsKing;
+class MovementsRook;
+class MovementsPawn;
+class MovementsKnight;
+class MovementsQueen;
+class MovementsBishop;
+
+class Figure;
 
 class Board 
 {
@@ -30,4 +34,12 @@ private:
  
     std::vector<std::shared_ptr<Figure>> figures; 
 
+    std::shared_ptr<MovementsKing   >movementsKing{nullptr};
+    std::shared_ptr<MovementsRook   >movementsRook{nullptr};
+    std::shared_ptr<MovementsPawn   >movementsPawn{nullptr};
+    std::shared_ptr<MovementsKnight >movementsKnight{nullptr};
+    std::shared_ptr<MovementsQueen  >movementsQueen{nullptr};
+    std::shared_ptr<MovementsBishop >movementsBishop{nullptr};
+
 };
+
