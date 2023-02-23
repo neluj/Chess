@@ -1,18 +1,15 @@
-#include <vector>
-#include <utility>
-#include <memory>
+#pragma once
+#include "Movements.hpp"
 
-class Queen;
-class Figure;
 class MovementsSides;
 class MovementsUpDown;
 class MovementsDiagonal;
 
-class MovementsQueen
+class MovementsQueen : public Movements
 {
 public:
     MovementsQueen();
-    std::vector<std::pair<int,int>> getMovements(const std::shared_ptr<Queen> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
+    virtual std::vector<std::pair<int,int>> getMovements(const std::shared_ptr<Figure> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 
 private:
 

@@ -8,7 +8,7 @@ MovementsKnight::MovementsKnight()
 }
 
 
-std::vector<std::pair<int,int>> MovementsKnight::getMovements(const std::shared_ptr<Knight> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsKnight::getMovements(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> movements;
     movements.reserve(8);
@@ -48,7 +48,7 @@ std::vector<std::pair<int,int>> MovementsKnight::getMovements(const std::shared_
     return movements;
 }
 
-void MovementsKnight::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<Knight> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+void MovementsKnight::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     if(movementsPositionState->positionExist(newPosition))
     {

@@ -12,7 +12,7 @@ MovementsKing::MovementsKing()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsKing::getMovements(const std::shared_ptr<King> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsKing::getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::pair<int,int> movementUp = movementsUpDown->getUpPosition(king->getPosition());
     std::pair<int,int> movementDown = movementsUpDown->getDownPosition(king->getPosition());
@@ -43,7 +43,7 @@ std::vector<std::pair<int,int>> MovementsKing::getMovements(const std::shared_pt
 
 
 
-void MovementsKing::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<King> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+void MovementsKing::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     if(movementsPositionState->positionExist(newPosition))
     {

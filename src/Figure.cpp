@@ -8,6 +8,11 @@ Figure::Figure(const Color & color, const Type & type, const std::pair<int, int>
     updatePosition(position.first, position.second);    
 }
 
+void Figure::getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+{
+    return movemets->getMovements(this, figuresOnBoard);
+}
+
 void Figure::updatePosition(int x, int y)
 {
     position = std::pair<int, int>(x,y);

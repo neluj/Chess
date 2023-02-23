@@ -9,7 +9,7 @@ MovementsPawn::MovementsPawn()
     movementsUpDown = std::make_shared<MovementsUpDown>();
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
-std::vector<std::pair<int,int>> MovementsPawn::getMovements(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getMovements(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
 
     if(pawn->getColor() == Figure::WHITE)
@@ -22,7 +22,7 @@ std::vector<std::pair<int,int>> MovementsPawn::getMovements(const std::shared_pt
 
 }
 // TODO unificar positions y movements!!!! O diferenciarlos claramente, posicion puede ser cualquier cosa y movements solo a las posiciones que se pueden acceder
-std::vector<std::pair<int,int>> MovementsPawn::getWhiteMovements(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getWhiteMovements(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> whiteMovements;
     std::vector<std::pair<int,int>> movementsFront = getWhiteFronts(pawn, figuresOnBoard);
@@ -34,7 +34,7 @@ std::vector<std::pair<int,int>> MovementsPawn::getWhiteMovements(const std::shar
 
     return whiteMovements;
 }
-std::vector<std::pair<int,int>> MovementsPawn::getBlackMovements(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getBlackMovements(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> blackMovements;
     std::vector<std::pair<int,int>> movementsFront = getBlackFronts(pawn, figuresOnBoard);
@@ -46,22 +46,22 @@ std::vector<std::pair<int,int>> MovementsPawn::getBlackMovements(const std::shar
 
     return blackMovements;
 }
-std::vector<std::pair<int,int>> MovementsPawn::getWhiteDiagonals(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getWhiteDiagonals(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getDiagonalsPositions(&MovementsDiagonal::getDiagonalUpLeft, &MovementsDiagonal::getDiagonalUpRight, pawn, figuresOnBoard);
 }
 
-std::vector<std::pair<int,int>> MovementsPawn::getBlackDiagonals(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getBlackDiagonals(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getDiagonalsPositions(&MovementsDiagonal::getDiagonalDownLeft, &MovementsDiagonal::getDiagonalDownRight, pawn, figuresOnBoard);
 }
 
-std::vector<std::pair<int,int>> MovementsPawn::getWhiteFronts(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getWhiteFronts(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getFrontPositions(&MovementsPawn::isWhiteInitialPosition, &MovementsUpDown::getUpPosition, pawn, figuresOnBoard);
 }
 
-std::vector<std::pair<int,int>> MovementsPawn::getBlackFronts(const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsPawn::getBlackFronts(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     return getFrontPositions(&MovementsPawn::isBlackInitialPosition, &MovementsUpDown::getDownPosition, pawn, figuresOnBoard);
 }
@@ -83,7 +83,7 @@ bool MovementsPawn::isBlackInitialPosition(const std::pair<int,int> &position)
 std::vector<std::pair<int,int>> MovementsPawn::getFrontPositions
 (bool               (MovementsPawn::*isInitialPosition)(const std::pair<int,int> &),
 std::pair<int,int>  (MovementsUpDown::*frontMovement  )(const std::pair<int,int> &), 
-const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> movements;
     movements.reserve(2);
@@ -113,7 +113,7 @@ const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & f
 std::vector<std::pair<int,int>> MovementsPawn::getDiagonalsPositions
 (std::pair<int,int>  (MovementsDiagonal::*diagonalLeft   )(const std::pair<int,int>&), 
  std::pair<int,int>  (MovementsDiagonal::*diagonalRight  )(const std::pair<int,int>&), 
- const std::shared_ptr<Pawn> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+ const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
  {
     std::vector<std::pair<int,int>> movements;
     movements.reserve(2);  

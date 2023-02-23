@@ -1,4 +1,5 @@
 #include "Pawn.hpp"
+#include "MovementsPawn.hpp"
 
 
 Pawn::Pawn(const Color & color, const std::pair<int, int> & pos):
