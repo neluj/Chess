@@ -10,7 +10,7 @@ class MovementsKing : public Movements
 {
 public:
     MovementsKing();
-    virtual std::vector<std::pair<int,int>> getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
+    std::vector<std::pair<int,int>> getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 
 private:
 
