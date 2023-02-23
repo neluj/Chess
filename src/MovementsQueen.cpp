@@ -12,7 +12,7 @@ MovementsQueen::MovementsQueen()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsQueen::getMovements(const std::shared_ptr<Queen> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsQueen::getMovements(const std::shared_ptr<Figure> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     std::vector<std::pair<int,int>> movementsUp = onDeep<MovementsUpDown, &MovementsUpDown::getUpPosition>  (movementsUpDown, queen, figuresOnBoard);
     std::vector<std::pair<int,int>> movementsDown = onDeep<MovementsUpDown, &MovementsUpDown::getDownPosition>(movementsUpDown, queen, figuresOnBoard);

@@ -8,7 +8,7 @@ MovementsBishop::MovementsBishop()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsBishop::getMovements(const std::shared_ptr<Bishop> bishop, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::pair<int,int>> MovementsBishop::getMovements(const std::shared_ptr<Figure> bishop, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
 
     std::vector<std::pair<int,int>> movementsDownLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownLeft>(movementsDiagonal, bishop, figuresOnBoard);
