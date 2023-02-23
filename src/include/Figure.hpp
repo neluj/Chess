@@ -1,7 +1,7 @@
 #pragma once
 #include "Movements.hpp"
 
-class Figure 
+class Figure : public std::enable_shared_from_this<Figure>
 {
 public:
 
@@ -9,7 +9,7 @@ public:
 
     enum Type { ROOK, KNIGHT, BISHOP, QUEEN, KING, PAWN };
 
-    Figure(const Color & color,const Type & type, const std::pair<int, int> & pos);
+    Figure(const Color & color,const Type & type, const std::pair<int, int> & pos, std::shared_ptr<Movements> movements = nullptr);
     virtual ~Figure(){}
     virtual std::vector<std::pair<int, int>> getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
     virtual std::shared_ptr<Figure> clone() const = 0;
@@ -24,6 +24,6 @@ protected:
     std::pair<int, int> position;
     const Color color;
     Type type;
-    std::shared_ptr<Movements> movemets;
+    std::shared_ptr<Movements> movements{nullptr};
 
 };
