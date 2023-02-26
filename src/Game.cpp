@@ -1,10 +1,16 @@
 #include "Game.hpp"
-#include "FigureRenderizer.hpp"
+#include "Board.hpp"
+#include "FigureRenderizerSFML.hpp"
+#include "PossibleMovementsRenderizerSFML.hpp"
+
+//TODO borrar
+#include "Figure.hpp"
 
 Game::Game()
 {
     board            =  std::make_shared<Board>(); 
-    figureRenderizer =  std::make_unique<FigureRenderizer>(board);
+    renderizers.push_back(std::make_shared<FigureRenderizerSFML>(board->getFigures()));
+    renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML>(&possibleMovements));
 }
 
 
@@ -39,7 +45,7 @@ void Game::MainLoop()
         
         window.clear();
         window.draw(boardSprite);
-        figureRenderizer->draw(window);
+        drawSFML(window);
         window.display();
     }   
 }
@@ -65,4 +71,12 @@ void Game::mouseLeftClick(int x, int y)
     //        figImag->updatePosition(5,5);
     //    } 
     //}       
+}
+
+void Game::drawSFML(RenderWindow & window)
+{
+    for(auto render : renderizers)
+    {
+        render->draw(window);
+    }
 }
