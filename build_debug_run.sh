@@ -1,15 +1,15 @@
 #! /bin/bash
 
-rm -R bin
+#rm -R bin
 
-mkdir bin
+#mkdir bin
 
 cd bin
 
-conan install ..
+#conan install ..
 
 cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 make
 
-gdb .bin/Chess
+#gdb bin/Chess
