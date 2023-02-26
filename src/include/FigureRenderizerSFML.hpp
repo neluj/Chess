@@ -2,9 +2,6 @@
 #include <memory>
 #include "RenderizerSFML.hpp"
 
-const int           IMAGE_SIZE = 64;
-const std::string   IMAGE_PATH = "images/figures.png";
-
 class Figure;
 
 class FigureRenderizerSFML : public RenderizerSFML
@@ -17,7 +14,8 @@ public:
 private:
 
     // TODO hacer con unordered map sprites-figures
-
+    const int           IMAGE_SIZE = 64;
+    const std::string   IMAGE_PATH = "images/figures.png";
 
     const std::vector<std::shared_ptr<Figure>> figures;
 
