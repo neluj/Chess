@@ -2,6 +2,7 @@ add_library(src
 Game.cpp
 Board.cpp
 FigureRenderizerSFML.cpp
+PossibleMovementsRenderizerSFML.cpp
 Figure.cpp
 Rook.cpp
 Pawn.cpp
