@@ -8,8 +8,8 @@ class RenderizerSFML
 {
 
 public:
-
-    virtual void draw(RenderWindow & window) = 0;
+      virtual ~RenderizerSFML(){}
+      virtual void draw(RenderWindow & window) = 0;
 
 protected:
 
