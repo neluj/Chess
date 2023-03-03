@@ -6,7 +6,7 @@ class Bishop :
 {
 public:
 
-    Bishop(const Color & color, const std::pair<int, int> & pos, std::shared_ptr<Movements> movements = nullptr);
+    Bishop(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos, std::shared_ptr<Movements> movements = nullptr);
     ~Bishop(){}
     std::shared_ptr<Figure> clone() const override;
 

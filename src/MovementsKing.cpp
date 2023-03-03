@@ -12,18 +12,19 @@ MovementsKing::MovementsKing()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsKing::getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::shared_ptr<std::pair<int,int>>> MovementsKing::getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
-    std::pair<int,int> movementUp = movementsUpDown->getUpPosition(king->getPosition());
-    std::pair<int,int> movementDown = movementsUpDown->getDownPosition(king->getPosition());
-    std::pair<int,int> movementLeft = movementsSides->getLeftPosition(king->getPosition());
-    std::pair<int,int> movementRight = movementsSides->getRightPosition(king->getPosition());
-    std::pair<int,int> movementDownLeft = movementsDiagonal->getDiagonalDownLeft(king->getPosition());
-    std::pair<int,int> movementDownRight = movementsDiagonal->getDiagonalDownRight(king->getPosition());
-    std::pair<int,int> movementUpLeft = movementsDiagonal->getDiagonalUpLeft(king->getPosition());
-    std::pair<int,int> movementUpRight = movementsDiagonal->getDiagonalUpRight(king->getPosition());
+    std::shared_ptr<std::pair<int,int>> actualPosition = std::make_shared<std::pair<int,int>>(king->getPosition()->first, king->getPosition()->second);
+    std::shared_ptr<std::pair<int,int>> movementUp = movementsUpDown->getUpPosition(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementDown = movementsUpDown->getDownPosition(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementLeft = movementsSides->getLeftPosition(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementRight = movementsSides->getRightPosition(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementDownLeft = movementsDiagonal->getDiagonalDownLeft(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementDownRight = movementsDiagonal->getDiagonalDownRight(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementUpLeft = movementsDiagonal->getDiagonalUpLeft(actualPosition);
+    std::shared_ptr<std::pair<int,int>> movementUpRight = movementsDiagonal->getDiagonalUpRight(actualPosition);
 
-    std::vector<std::pair<int,int>> movements;
+    std::vector<std::shared_ptr<std::pair<int,int>>> movements;
 
     movements.reserve(8);
 
@@ -43,7 +44,7 @@ std::vector<std::pair<int,int>> MovementsKing::getMovements(const std::shared_pt
 
 
 
-void MovementsKing::pushPosition(std::vector<std::pair<int,int>> & movements, const std::pair<int,int> & newPosition, const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+void MovementsKing::pushPosition(std::vector<std::shared_ptr<std::pair<int,int>>> & movements, const std::shared_ptr<std::pair<int,int>> & newPosition, const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
     if(movementsPositionState->positionExist(newPosition))
     {

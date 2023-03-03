@@ -19,7 +19,10 @@ MovementsPawn.cpp
 MovementsQueen.cpp
 MovementsRook.cpp
 MovementsBishop.cpp
-MovementsKing.cpp)
+MovementsKing.cpp
+State.cpp
+StateNothingSelected.cpp
+StateFigureSelected.cpp)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 

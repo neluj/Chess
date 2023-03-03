@@ -5,12 +5,19 @@
 
 //TODO borrar
 #include "Figure.hpp"
+#include "State.hpp"
+
+
+const unsigned int BOARD_SIZE_X = 512;
+const unsigned int BOARD_SIZE_Y = 512;
+
+const unsigned short SQUARES_SIZE = 8;
 
 Game::Game()
 {
     board            =  std::make_shared<Board>(); 
-    renderizers.push_back(std::make_shared<FigureRenderizerSFML>(board->getFigures()));
-    renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML>(&possibleMovements));
+    renderizers.push_back(std::make_shared<FigureRenderizerSFML>            (board->getFigures()));
+    renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML> (board->getPossibleMovements()));
 }
 
 
@@ -24,9 +31,9 @@ void Game::MainLoop()
     boardSprite.setTexture(boardTexture);   
 
 
-    RenderWindow window(VideoMode(512, 520), "The Chess! (press SPACE)");
+    RenderWindow window(VideoMode(BOARD_SIZE_X, BOARD_SIZE_Y), "Chess");
 
-    Vector2f offset(28,28);
+    Vector2f offset;
 
     while (window.isOpen())
     {
@@ -53,24 +60,37 @@ void Game::MainLoop()
 
 void Game::mouseLeftClick(int x, int y)
 {
-    //if(figureIsSelected)
-    //{
-    //    if()
-    //    figureManager.updatePosition(...);
-    //}
-    //else 
-    //{
-    //    figureManager.selecFigure(...);
-    //}
-    //
-    //figureManager.updatePosition();
-    //for(std::shared_ptr<Figure> figImag : figureManager.getFigureImages())
-    //{
-    //    if (figImag->getSprite()->getGlobalBounds().contains(x,y))
-    //    {
-    //        figImag->updatePosition(5,5);
-    //    } 
-    //}       
+    if(clickedInsideBoard(x,y))
+    {
+        std::shared_ptr<std::pair<int,int>> selectedPosition = getBoardPositionFromClicked(x,y);
+        std::shared_ptr<Figure> figure = board->getFigureFromPosition(selectedPosition);
+
+        if(figure != nullptr)
+        {
+            board->getState()->clickOnFigure(figure);
+        }
+        else
+        {
+            board->getState()->clickOnEmptyBoard();
+        }
+    }
+    
+}
+
+bool Game::clickedInsideBoard(int x, int y)
+{
+    if(x>BOARD_SIZE_X || y>BOARD_SIZE_Y)
+        return false;
+    
+    return true; 
+}
+
+std::shared_ptr<std::pair<int,int>> Game::getBoardPositionFromClicked(int x, int y)
+{
+    int posX = (x*SQUARES_SIZE)/BOARD_SIZE_X;
+    int posY = (y*SQUARES_SIZE)/BOARD_SIZE_Y;
+
+    return std::make_shared<std::pair<int, int>>(posX,posY);
 }
 
 void Game::drawSFML(RenderWindow & window)

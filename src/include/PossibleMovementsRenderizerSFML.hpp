@@ -1,13 +1,13 @@
 #pragma once
 #include "RenderizerSFML.hpp"
-#include <vector>
+#include <list>
 
 
 class PossibleMovementsRenderizerSFML : public RenderizerSFML
 {
 public:
 
-    PossibleMovementsRenderizerSFML(std::vector<std::pair<int,int>> * possibleMovements);
+    PossibleMovementsRenderizerSFML(const std::vector<std::shared_ptr<std::pair<int,int>>> & possibleMovements);
     void draw(RenderWindow & window) override;
 
 private:
@@ -15,6 +15,6 @@ private:
     const int           IMAGE_SIZE = 64;
     const std::string   IMAGE_PATH = "images/squareSelection.png";
 
-    std::vector<std::pair<int,int>> * possibleMovements;
+    const std::vector<std::shared_ptr<std::pair<int,int>>> possibleMovements;
 
 };

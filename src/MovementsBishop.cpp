@@ -8,15 +8,15 @@ MovementsBishop::MovementsBishop()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsBishop::getMovements(const std::shared_ptr<Figure> bishop, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::shared_ptr<std::pair<int,int>>> MovementsBishop::getMovements(const std::shared_ptr<Figure> bishop, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
 
-    std::vector<std::pair<int,int>> movementsDownLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownLeft>(movementsDiagonal, bishop, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsDownRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownRight>(movementsDiagonal, bishop, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsUpLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpLeft>(movementsDiagonal, bishop, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsUpRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpRight>(movementsDiagonal, bishop, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsDownLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownLeft>(movementsDiagonal, bishop, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsDownRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownRight>(movementsDiagonal, bishop, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsUpLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpLeft>(movementsDiagonal, bishop, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsUpRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpRight>(movementsDiagonal, bishop, figuresOnBoard);
 
-    std::vector<std::pair<int,int>> movements;
+    std::vector<std::shared_ptr<std::pair<int,int>>> movements;
     size_t movementsSize = movementsDownLeft.size() + movementsDownRight.size() + movementsUpLeft.size() + movementsUpRight.size();
 
     movements.reserve(movementsSize);

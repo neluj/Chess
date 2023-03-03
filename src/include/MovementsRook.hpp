@@ -8,7 +8,7 @@ class MovementsRook : public Movements
 {
 public:
     MovementsRook();
-    std::vector<std::pair<int,int>> getMovements(const std::shared_ptr<Figure> rook, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
+    std::vector<std::shared_ptr<std::pair<int,int>>> getMovements(const std::shared_ptr<Figure> rook, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 
 private:
 

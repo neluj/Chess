@@ -15,7 +15,7 @@ FigureRenderizerSFML::FigureRenderizerSFML(const std::vector<std::shared_ptr<Fig
         textures.back()->loadFromFile(IMAGE_PATH);
         sprites.back()->setTexture(*textures.back());
         sprites.back()->setTextureRect(sf::IntRect(IMAGE_SIZE * figure->getType() , IMAGE_SIZE * figure->getColor(), IMAGE_SIZE, IMAGE_SIZE)); 
-        sprites.back()->setPosition(IMAGE_SIZE * figure->getPosition().first, IMAGE_SIZE * figure->getPosition().second); 
+        sprites.back()->setPosition(IMAGE_SIZE * figure->getPosition()->first, IMAGE_SIZE * figure->getPosition()->second); 
     }
 
 }
@@ -25,7 +25,7 @@ void FigureRenderizerSFML::draw(RenderWindow & window)
     size_t renders = figures.size() < sprites.size() ? figures.size()  : sprites.size();
     for(size_t ind = 0; ind < renders ; ++ind)
     {
-        sprites.at(ind)->setPosition(IMAGE_SIZE * figures.at(ind)->getPosition().first, IMAGE_SIZE * figures.at(ind)->getPosition().second); 
+        sprites.at(ind)->setPosition(IMAGE_SIZE * figures.at(ind)->getPosition()->first, IMAGE_SIZE * figures.at(ind)->getPosition()->second); 
         window.draw(*(sprites.at(ind)));
     }
 }

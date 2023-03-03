@@ -1,13 +1,14 @@
 #pragma once
 #include <utility>
+#include <memory>
 
 class MovementsDiagonal
 {
 public:
 
-    std::pair<int,int> getDiagonalUpLeft   (const std::pair<int,int> & position);
-    std::pair<int,int> getDiagonalUpRight  (const std::pair<int,int> & position);
-    std::pair<int,int> getDiagonalDownLeft (const std::pair<int,int> & position);
-    std::pair<int,int> getDiagonalDownRight(const std::pair<int,int> & position);  
+    std::shared_ptr<std::pair<int,int>> getDiagonalUpLeft   (const std::shared_ptr<std::pair<int,int>> & position);
+    std::shared_ptr<std::pair<int,int>> getDiagonalUpRight  (const std::shared_ptr<std::pair<int,int>> & position);
+    std::shared_ptr<std::pair<int,int>> getDiagonalDownLeft (const std::shared_ptr<std::pair<int,int>> & position);
+    std::shared_ptr<std::pair<int,int>> getDiagonalDownRight(const std::shared_ptr<std::pair<int,int>> & position);  
 
 };
