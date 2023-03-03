@@ -12,18 +12,18 @@ MovementsQueen::MovementsQueen()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::pair<int,int>> MovementsQueen::getMovements(const std::shared_ptr<Figure> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
+std::vector<std::shared_ptr<std::pair<int,int>>> MovementsQueen::getMovements(const std::shared_ptr<Figure> queen, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
-    std::vector<std::pair<int,int>> movementsUp = onDeep<MovementsUpDown, &MovementsUpDown::getUpPosition>  (movementsUpDown, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsDown = onDeep<MovementsUpDown, &MovementsUpDown::getDownPosition>(movementsUpDown, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsLeft = onDeep<MovementsSides, &MovementsSides::getLeftPosition>(movementsSides, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsRight = onDeep<MovementsSides, &MovementsSides::getRightPosition>(movementsSides, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsDownLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownLeft>(movementsDiagonal, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsDownRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownRight>(movementsDiagonal, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsUpLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpLeft>(movementsDiagonal, queen, figuresOnBoard);
-    std::vector<std::pair<int,int>> movementsUpRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpRight>(movementsDiagonal, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsUp = onDeep<MovementsUpDown, &MovementsUpDown::getUpPosition>  (movementsUpDown, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsDown = onDeep<MovementsUpDown, &MovementsUpDown::getDownPosition>(movementsUpDown, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsLeft = onDeep<MovementsSides, &MovementsSides::getLeftPosition>(movementsSides, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsRight = onDeep<MovementsSides, &MovementsSides::getRightPosition>(movementsSides, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsDownLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownLeft>(movementsDiagonal, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsDownRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalDownRight>(movementsDiagonal, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsUpLeft = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpLeft>(movementsDiagonal, queen, figuresOnBoard);
+    std::vector<std::shared_ptr<std::pair<int,int>>> movementsUpRight = onDeep<MovementsDiagonal, &MovementsDiagonal::getDiagonalUpRight>(movementsDiagonal, queen, figuresOnBoard);
 
-    std::vector<std::pair<int,int>> movements;
+    std::vector<std::shared_ptr<std::pair<int,int>>> movements;
     size_t movementsSize = movementsUp.size() + movementsDown.size() + movementsLeft.size() + movementsRight.size() + 
                            movementsDownLeft.size() + movementsDownRight.size() + movementsUpLeft.size() + movementsUpRight.size();
 

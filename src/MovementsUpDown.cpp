@@ -1,10 +1,10 @@
 #include "MovementsUpDown.hpp"
 
-std::pair<int,int> MovementsUpDown::getUpPosition(const std::pair<int,int> & position)
+std::shared_ptr<std::pair<int,int>> MovementsUpDown::getUpPosition(const std::shared_ptr<std::pair<int,int>> & position)
 {
-    return std::pair<int, int>(position.first, position.second-1);
+    return std::make_shared<std::pair<int, int>>(position->first, position->second-1);
 }
-std::pair<int,int> MovementsUpDown::getDownPosition(const std::pair<int,int> & position)
+std::shared_ptr<std::pair<int,int>> MovementsUpDown::getDownPosition(const std::shared_ptr<std::pair<int,int>> & position)
 {
-    return std::pair<int, int> (position.first, position.second+1);
+    return std::make_shared<std::pair<int, int>> (position->first, position->second+1);
 }

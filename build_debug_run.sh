@@ -12,4 +12,6 @@ cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 make
 
-#gdb bin/Chess
+cd bin
+
+gdb Chess

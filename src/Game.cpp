@@ -62,7 +62,7 @@ void Game::mouseLeftClick(int x, int y)
 {
     if(clickedInsideBoard(x,y))
     {
-        std::pair<int,int> selectedPosition = getBoardPositionFromClicked(x,y);
+        std::shared_ptr<std::pair<int,int>> selectedPosition = getBoardPositionFromClicked(x,y);
         std::shared_ptr<Figure> figure = board->getFigureFromPosition(selectedPosition);
 
         if(figure != nullptr)
@@ -85,12 +85,12 @@ bool Game::clickedInsideBoard(int x, int y)
     return true; 
 }
 
-std::pair<int,int> Game::getBoardPositionFromClicked(int x, int y)
+std::shared_ptr<std::pair<int,int>> Game::getBoardPositionFromClicked(int x, int y)
 {
     int posX = (x*SQUARES_SIZE)/BOARD_SIZE_X;
     int posY = (y*SQUARES_SIZE)/BOARD_SIZE_Y;
 
-    return std::pair<int, int>(posX,posY);
+    return std::make_shared<std::pair<int, int>>(posX,posY);
 }
 
 void Game::drawSFML(RenderWindow & window)
