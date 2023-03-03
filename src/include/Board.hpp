@@ -3,12 +3,6 @@
 #include <memory>
 #include <vector>
 
-class MovementsKing;
-class MovementsRook;
-class MovementsPawn;
-class MovementsKnight;
-class MovementsQueen;
-class MovementsBishop;
 
 class Figure;
 // TODO
@@ -45,12 +39,6 @@ private:
     std::vector<std::shared_ptr<Figure>> figures;
     std::vector<std::shared_ptr<std::pair<int,int>>> possibleMovements; 
 
-    std::shared_ptr<MovementsKing   >movementsKing{nullptr};
-    std::shared_ptr<MovementsRook   >movementsRook{nullptr};
-    std::shared_ptr<MovementsPawn   >movementsPawn{nullptr};
-    std::shared_ptr<MovementsKnight >movementsKnight{nullptr};
-    std::shared_ptr<MovementsQueen  >movementsQueen{nullptr};
-    std::shared_ptr<MovementsBishop >movementsBishop{nullptr};
     // TODO
     std::shared_ptr<State> state;
     std::shared_ptr<Figure> selectedFigure{nullptr};
