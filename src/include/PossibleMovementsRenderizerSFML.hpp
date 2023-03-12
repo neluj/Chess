@@ -7,7 +7,7 @@ class PossibleMovementsRenderizerSFML : public RenderizerSFML
 {
 public:
 
-    PossibleMovementsRenderizerSFML(const std::vector<std::shared_ptr<std::pair<int,int>>> & possibleMovements);
+    PossibleMovementsRenderizerSFML(const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> possibleMovements);
     void draw(RenderWindow & window) override;
 
 private:
@@ -15,6 +15,6 @@ private:
     const int           IMAGE_SIZE = 64;
     const std::string   IMAGE_PATH = "images/squareSelection.png";
 
-    const std::vector<std::shared_ptr<std::pair<int,int>>> possibleMovements;
+    const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> possibleMovements;
 
 };

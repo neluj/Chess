@@ -17,6 +17,7 @@
 Board::Board()
 {
     figures.reserve(32);
+    possibleMovements = std::make_shared<std::list<std::shared_ptr<const std::pair<int,int>>>>();
     setInitialState();
 }
 
@@ -72,7 +73,7 @@ const std::vector<std::shared_ptr<Figure>> & Board::getFigures() const
     return figures;
 }
 
-const std::vector<std::shared_ptr<std::pair<int,int>>> Board::getPossibleMovements() const
+const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> Board::getPossibleMovements() const
 {
     return possibleMovements;
 }
@@ -99,14 +100,16 @@ const std::shared_ptr<State> Board::getState()
 void Board::selectFigure(std::shared_ptr<Figure> figure)
 {
     selectedFigure = figure;
-    possibleMovements = figure->getPossibleMovements(figures);
+    auto vecPossibleMovements = figure->getPossibleMovements(figures);
+    possibleMovements->clear();
+    std::copy(vecPossibleMovements.begin(), vecPossibleMovements.end(), std::back_inserter(*possibleMovements));
     state = std::make_shared<StateFigureSelected>(std::make_shared<Board>(*this));
 }
 
 void Board::unselectFigure()
 {
     selectedFigure = nullptr;
-    possibleMovements.clear();
+    possibleMovements->clear();
     state = std::make_shared<StateNothingSelected>(std::make_shared<Board>(*this));
 }
 

@@ -16,7 +16,7 @@ const unsigned short SQUARES_SIZE = 8;
 Game::Game()
 {
     board            =  std::make_shared<Board>(); 
-    renderizers.push_back(std::make_shared<FigureRenderizerSFML>            (board->getFigures()));
+    //renderizers.push_back(std::make_shared<FigureRenderizerSFML>            (board->getFigures()));
     renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML> (board->getPossibleMovements()));
 }
 
