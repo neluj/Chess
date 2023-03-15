@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include <list>
 
 
 class Figure;
@@ -26,7 +27,7 @@ public:
    
     const std::vector<std::shared_ptr<Figure>> & getFigures() const;
     std::shared_ptr<Figure> getFigureFromPosition(const std::shared_ptr<std::pair<int,int>> & position) const;
-    const std::vector<std::shared_ptr<std::pair<int,int>>> getPossibleMovements() const;
+    const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> getPossibleMovements() const;
     // TODO
     const std::shared_ptr<State> getState();
     void selectFigure(std::shared_ptr<Figure> figure);
@@ -37,7 +38,7 @@ public:
 private:
  
     std::vector<std::shared_ptr<Figure>> figures;
-    std::vector<std::shared_ptr<std::pair<int,int>>> possibleMovements; 
+    std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements; 
 
     // TODO
     std::shared_ptr<State> state;
