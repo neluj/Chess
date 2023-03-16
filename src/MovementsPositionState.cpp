@@ -16,7 +16,7 @@ std::shared_ptr<Figure> MovementsPositionState::getFigureOnPosition(const std::s
     std::shared_ptr<Figure> figureOnPosition{nullptr};  
     for(std::shared_ptr<Figure> fig : figuresOnBoard)
     {
-        if(fig->getPosition() == position)
+        if((fig->getPosition()->first == position->first) && (fig->getPosition()->second == position->second))
             return fig;
     }
     return figureOnPosition;
