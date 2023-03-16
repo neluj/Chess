@@ -1,6 +1,9 @@
 #pragma once
 #include "Movements.hpp"
 
+namespace chess
+{
+
 class MovementsDiagonal;
 
 class MovementsBishop : public Movements
@@ -14,3 +17,5 @@ private:
     std::shared_ptr<MovementsDiagonal> movementsDiagonal;
 
 };
+
+}

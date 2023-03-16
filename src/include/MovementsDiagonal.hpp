@@ -2,6 +2,9 @@
 #include <utility>
 #include <memory>
 
+namespace chess
+{
+
 class MovementsDiagonal
 {
 public:
@@ -12,3 +15,5 @@ public:
     std::shared_ptr<std::pair<int,int>> getDiagonalDownRight(const std::shared_ptr<std::pair<int,int>> & position);  
 
 };
+
+}

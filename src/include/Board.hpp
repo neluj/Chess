@@ -4,6 +4,9 @@
 #include <vector>
 #include <list>
 
+namespace chess
+{
+
 
 class Figure;
 // TODO
@@ -45,3 +48,5 @@ private:
     std::shared_ptr<Figure> selectedFigure{nullptr};
 
 };
+
+}

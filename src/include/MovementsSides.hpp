@@ -2,6 +2,8 @@
 #include <vector>
 #include "Figure.hpp"
 
+namespace chess
+{
 
 class MovementsSides
 {
@@ -12,3 +14,5 @@ public:
     std::shared_ptr<std::pair<int,int>> getRightPosition    (const std::shared_ptr<std::pair<int,int>> & position);
 
 };
+
+}

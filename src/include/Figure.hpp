@@ -3,6 +3,9 @@
 #include <memory>
 #include <vector>
 
+namespace chess
+{
+
 class Figure : public std::enable_shared_from_this<Figure>
 {
 public:
@@ -28,3 +31,5 @@ protected:
     Type type;
 
 };
+
+}

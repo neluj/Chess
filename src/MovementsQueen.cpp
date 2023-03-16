@@ -5,6 +5,9 @@
 #include "MovementsSides.hpp"
 #include "Queen.hpp"
 
+using namespace chess;
+
+
 MovementsQueen::MovementsQueen()
 {
     movementsSides = std::make_shared<MovementsSides>();

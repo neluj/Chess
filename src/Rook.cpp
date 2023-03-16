@@ -1,6 +1,9 @@
 #include "Rook.hpp"
 #include "MovementsRook.hpp"
 
+using namespace chess;
+
+
 Rook::Rook(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::ROOK, pos)
 {}

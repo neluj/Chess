@@ -1,6 +1,9 @@
 #include "Knight.hpp"
 #include "MovementsKnight.hpp"
 
+using namespace chess;
+
+
 Knight::Knight(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::KNIGHT, pos)
 {}

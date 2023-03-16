@@ -1,6 +1,9 @@
 #pragma once
 #include "Movements.hpp"
 
+namespace chess
+{
+
 class MovementsSides;
 class MovementsUpDown;
 
@@ -15,3 +18,5 @@ private:
     std::shared_ptr<MovementsSides> movementsSides;
     std::shared_ptr<MovementsUpDown> movementsUpDown;
 };
+
+}

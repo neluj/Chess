@@ -1,6 +1,8 @@
 #pragma once
 #include "Figure.hpp"
 
+namespace chess
+{
 
 class Queen :
     public Figure
@@ -13,3 +15,5 @@ public:
     std::vector<std::shared_ptr<std::pair<int,int>>> getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 
 };
+
+}

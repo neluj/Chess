@@ -2,6 +2,9 @@
 #include <memory>
 #include <utility>
 
+namespace chess
+{
+
 class Board;
 class Figure;
 
@@ -18,3 +21,5 @@ protected:
 
     std::shared_ptr<Board> board;
 };
+
+}

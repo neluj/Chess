@@ -4,6 +4,9 @@
 #include "MovementsPositionState.hpp"
 #include "Pawn.hpp"
 
+using namespace chess;
+
+
 MovementsPawn::MovementsPawn()
 {
     movementsUpDown = std::make_shared<MovementsUpDown>();

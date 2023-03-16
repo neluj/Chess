@@ -3,6 +3,9 @@
 #include "MovementsDiagonal.hpp"
 #include "Bishop.hpp"
 
+using namespace chess;
+
+
 MovementsBishop::MovementsBishop()
 {
     movementsDiagonal = std::make_shared<MovementsDiagonal>();

@@ -1,6 +1,9 @@
 #include "Queen.hpp"
 #include "MovementsQueen.hpp"
 
+using namespace chess;
+
+
 Queen::Queen(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::QUEEN, pos)
 {}

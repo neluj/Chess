@@ -2,6 +2,10 @@
 #include "MovementsPositionState.hpp"
 #include "Figure.hpp"
 
+namespace chess
+{
+
+
 //Given a movement, iterates until 
 //1.-the end of the board,
 //2.-A team mate is founded,
@@ -34,4 +38,6 @@ std::vector<std::shared_ptr<std::pair<int,int>>> onDeep(const std::shared_ptr<Mo
         }
     }    
     return onDeep; 
+}
+
 }

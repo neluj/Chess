@@ -3,7 +3,7 @@
 int main()
 {
 
-    Game game;
+    chess::Game game;
     game.MainLoop();
     return 0;
 }

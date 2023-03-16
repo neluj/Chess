@@ -4,6 +4,9 @@
 #include "MovementsSides.hpp"
 #include "Rook.hpp"
 
+using namespace chess;
+
+
 MovementsRook::MovementsRook()
 {
     movementsSides = std::make_shared<MovementsSides>();

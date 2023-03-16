@@ -2,6 +2,10 @@
 
 #include "Movements.hpp"
 
+namespace chess
+{
+
+
 class MovementsUpDown;
 class MovementsPositionState;
 class MovementsDiagonal;
@@ -54,3 +58,5 @@ private:
     std::shared_ptr<MovementsDiagonal> movementsDiagonal;
 
 };
+
+}

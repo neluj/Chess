@@ -2,6 +2,9 @@
 #include "MovementsPawn.hpp"
 
 
+using namespace chess;
+
+
 Pawn::Pawn(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::PAWN, pos)
 {}

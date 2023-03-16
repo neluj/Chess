@@ -1,6 +1,9 @@
 #include "FigureRenderizerSFML.hpp"
 #include "Figure.hpp"
     
+
+using namespace chess;
+
     
 FigureRenderizerSFML::FigureRenderizerSFML(const std::vector<std::shared_ptr<Figure>> & figures) :
     figures(figures)

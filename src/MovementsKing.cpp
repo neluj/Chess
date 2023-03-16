@@ -5,6 +5,9 @@
 #include "MovementsPositionState.hpp"
 #include "King.hpp"
 
+using namespace chess;
+
+
 MovementsKing::MovementsKing()
 {
     movementsSides = std::make_shared<MovementsSides>();

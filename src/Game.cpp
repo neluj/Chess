@@ -7,6 +7,9 @@
 #include "Figure.hpp"
 #include "State.hpp"
 
+using namespace chess;
+
+
 const unsigned int BOARD_SIZE_X = 512;
 const unsigned int BOARD_SIZE_Y = 512;
 
