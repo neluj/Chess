@@ -1,6 +1,9 @@
 #pragma once
 #include "Movements.hpp"
 
+namespace chess
+{
+
 class MovementsSides;
 class MovementsUpDown;
 class MovementsDiagonal;
@@ -23,3 +26,5 @@ private:
 
 
 };
+
+}

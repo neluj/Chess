@@ -1,6 +1,9 @@
 #include "King.hpp"
 #include "MovementsKing.hpp"
 
+using namespace chess;
+
+
 King::King(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::KING, pos)
 {}

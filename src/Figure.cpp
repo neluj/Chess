@@ -1,5 +1,8 @@
 #include "Figure.hpp"
 
+using namespace chess;
+
+
 Figure::Figure(const Color & color, const Type & type, const std::shared_ptr<std::pair<int, int>> & pos) :
     position(pos), 
     color(color),

@@ -1,6 +1,9 @@
 #include "StateFigureSelected.hpp"
 #include "Board.hpp"
 
+using namespace chess;
+
+
 StateFigureSelected::StateFigureSelected(std::shared_ptr<Board> board) :
     State::State(board)
 {}

@@ -1,6 +1,9 @@
 #pragma once
 #include "State.hpp"
 
+namespace chess
+{
+
 class StateFigureSelected : public State
 {
 
@@ -10,3 +13,5 @@ public:
     void clickOnEmptyBoard()                                    override;
     void clickOnFigure(std::shared_ptr<Figure> figure)          override;
 };
+
+}

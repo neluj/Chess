@@ -14,6 +14,9 @@
 
 #include <algorithm>
 
+using namespace chess;
+
+
 Board::Board()
 {
     figures.reserve(32);

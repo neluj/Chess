@@ -2,6 +2,9 @@
 #include <memory>
 #include "RenderizerSFML.hpp"
 
+namespace chess
+{
+
 class Figure;
 
 class FigureRenderizerSFML : public RenderizerSFML
@@ -20,3 +23,5 @@ private:
     const std::vector<std::shared_ptr<Figure>> figures;
 
 };
+
+}

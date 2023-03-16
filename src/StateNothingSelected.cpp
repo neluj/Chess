@@ -1,6 +1,9 @@
 #include "StateNothingSelected.hpp"
 #include "Board.hpp"
 
+using namespace chess;
+
+
 StateNothingSelected::StateNothingSelected(std::shared_ptr<Board> board) :
     State::State(board)
 {}

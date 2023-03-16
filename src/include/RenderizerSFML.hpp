@@ -4,6 +4,9 @@
 
 using namespace sf;
 
+namespace chess
+{
+
 class RenderizerSFML 
 {
 
@@ -17,4 +20,6 @@ protected:
     std::vector<std::shared_ptr<Texture>> textures;
 
 };
+
+}
 

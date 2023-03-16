@@ -1,6 +1,9 @@
 #pragma once
 #include "Movements.hpp"
 
+namespace chess
+{
+
 class MovementsPositionState;
 
 class MovementsKnight : public Movements
@@ -16,3 +19,6 @@ private:
     std::shared_ptr<MovementsPositionState> movementsPositionState;
 
 };
+
+
+}

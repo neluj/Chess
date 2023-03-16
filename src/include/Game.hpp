@@ -2,6 +2,8 @@
 #include <utility>
 #include "RenderizerSFML.hpp"
 
+namespace chess
+{
 
 class Board;
 
@@ -26,3 +28,5 @@ private:
     std::vector< std::shared_ptr<RenderizerSFML> > renderizers;
 
 };
+
+}

@@ -1,5 +1,8 @@
 #include "MovementsPositionState.hpp"
 
+using namespace chess;
+
+
 bool MovementsPositionState::positionExist(const std::shared_ptr<std::pair<int,int>>  &position)
 {
     //Chek if some of the points is bigger than 7 or smaller than 0

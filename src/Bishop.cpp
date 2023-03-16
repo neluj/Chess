@@ -1,6 +1,8 @@
 #include "Bishop.hpp"
 #include "MovementsBishop.hpp"
 
+using namespace chess;
+
 Bishop::Bishop(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
 Figure::Figure(color, Type::BISHOP, pos)
 {}
