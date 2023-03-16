@@ -15,6 +15,6 @@ std::shared_ptr<Figure> Knight::clone() const
 
 std::vector<std::shared_ptr<std::pair<int,int>>> Knight::getPossibleMovements(const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
-    std::shared_ptr<MovementsKnight> movements = std::make_shared<MovementsKnight>();
-    return movements->getMovements(shared_from_this(), figuresOnBoard);
+    static MovementsKnight movements;
+    return movements.getMovements(shared_from_this(), figuresOnBoard);
 }
