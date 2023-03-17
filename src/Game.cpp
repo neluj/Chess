@@ -5,7 +5,7 @@
 
 // TODO borrar
 #include "Figure.hpp"
-#include "State.hpp"
+#include "StateNothingSelected.hpp"
 
 using namespace chess;
 
@@ -17,7 +17,7 @@ const unsigned short SQUARES_SIZE = 8;
 
 Game::Game()
 {
-    board = std::make_shared<Board>();
+    board = std::make_shared<Board>(new StateNothingSelected);
     renderizers.push_back(std::make_shared<FigureRenderizerSFML>(board->getFigures()));
     renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML>(board->getPossibleMovements()));
 }
@@ -55,18 +55,34 @@ void Game::MainLoop()
 
 void Game::mouseLeftClick(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
+    bool moved = false;
     if (clickedInsideBoard(clickedPosition))
     {
-        
-        std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
-
-        if (figure != nullptr)
+        auto possibleMovementsIterator = board->getPossibleMovements()->begin();
+        while(!moved && possibleMovementsIterator != board->getPossibleMovements()->end())
         {
-            board->getState()->clickOnFigure(figure);
+            if(((*possibleMovementsIterator)->first == clickedPosition->first) && ((*possibleMovementsIterator)->second == clickedPosition->second))
+            {
+                board->getState()->clickOnMovemet(clickedPosition);
+                moved = true;
+            }
+            else
+            {
+                ++possibleMovementsIterator;
+            }
         }
-        else
+        if(!moved)
         {
-            board->getState()->clickOnEmptyBoard();
+            std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
+    
+            if (figure != nullptr)
+            {
+                board->getState()->clickOnFigure(figure);
+            }
+            else
+            {
+                board->getState()->clickOnEmptyBoard();
+            }
         }
     }
 }

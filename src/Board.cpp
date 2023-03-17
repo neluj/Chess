@@ -9,7 +9,6 @@
 
 // TODO
 #include "StateNothingSelected.hpp"
-#include "StateFigureSelected.hpp"
 
 
 #include <algorithm>
@@ -17,14 +16,19 @@
 using namespace chess;
 
 
-Board::Board()
+Board::Board(State* newState) : state(nullptr)
 {
     figures.reserve(32);
     possibleMovements = std::make_shared<std::list<std::shared_ptr<const std::pair<int,int>>>>();
-    setInitialState();
+    setInitialState(newState);
 }
 
-void Board::setInitialState()
+Board::~Board()
+{
+    delete state;
+}
+
+void Board::setInitialState(State* newState)
 {
     figures.reserve(32);
 
@@ -66,11 +70,18 @@ void Board::setInitialState()
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(5, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(6, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(7, 1)));
+
     // TODO
-    state = std::make_shared<StateNothingSelected>(std::make_shared<Board>(*this));
+    updateState(newState);
 
 }
-
+void Board::updateState(State* newState)
+{
+    if (this->state != nullptr)
+      delete this->state;
+    this->state = newState;
+    this->state->setBoard(this);
+}
 const std::vector<std::shared_ptr<Figure>> & Board::getFigures() const
 {
     return figures;
@@ -95,7 +106,7 @@ std::shared_ptr<Figure> Board::getFigureFromPosition(std::shared_ptr<const std::
 
 }
 
-const std::shared_ptr<State> Board::getState()
+State* Board::getState()
 {
     return state;
 }
@@ -106,19 +117,18 @@ void Board::selectFigure(std::shared_ptr<Figure> figure)
     auto vecPossibleMovements = figure->getPossibleMovements(figures);
     possibleMovements->clear();
     std::copy(vecPossibleMovements.begin(), vecPossibleMovements.end(), std::back_inserter(*possibleMovements));
-    state = std::make_shared<StateFigureSelected>(std::make_shared<Board>(*this));
 }
 
 void Board::unselectFigure()
 {
     selectedFigure = nullptr;
     possibleMovements->clear();
-    state = std::make_shared<StateNothingSelected>(std::make_shared<Board>(*this));
 }
 
 //TODO cambiar a state del rival
-void Board::moveSelectedFigure(const std::pair<int,int> & position)
+void Board::moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
     if(selectedFigure != nullptr)
-        selectedFigure->updatePosition(position.first, position.second);
+        selectedFigure->updatePosition(clickedPosition->first, clickedPosition->second);
+    possibleMovements->clear();
 }

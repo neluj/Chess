@@ -3,6 +3,7 @@
 using namespace chess;
 
 
-State::State(std::shared_ptr<Board> board) :
-    board(board)
-{}
+void State::setBoard(Board *board)
+{
+    this->board = board;
+}
