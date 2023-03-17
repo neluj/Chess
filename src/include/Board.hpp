@@ -16,7 +16,8 @@ class Board
 {
 
 public:
-    Board();
+    Board(State* newState);
+    ~Board();
 
     //r, n, b, q, k, b, n, r
     //p, p, p, p, p, p, p, p
@@ -26,26 +27,30 @@ public:
     //e, e, e, e, e, e, e, e
     //P, P, P, P, P, P, P, P
     //R, N, B, Q, K, B, N, R   
-    void setInitialState();
+    void setInitialState(State* newState);
    
     const std::vector<std::shared_ptr<Figure>> & getFigures() const;
     std::shared_ptr<Figure> getFigureFromPosition(std::shared_ptr<const std::pair<int,int>> & position) const;
-    const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> getPossibleMovements() const;
     // TODO
-    const std::shared_ptr<State> getState();
+    State* getState();
+    const std::shared_ptr<const Figure> getSelectedFigure();
+    void updateState(State* newState);
     void selectFigure(std::shared_ptr<Figure> figure);
     void unselectFigure();
-    void moveSelectedFigure(const std::pair<int,int> & position);
+    void moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition);
+    const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> getPossibleMovements() const;
+
 
     
 private:
  
     std::vector<std::shared_ptr<Figure>> figures;
-    std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements; 
+
 
     // TODO
-    std::shared_ptr<State> state;
+    State* state{nullptr};
     std::shared_ptr<Figure> selectedFigure{nullptr};
+    std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements; 
 
 };
 

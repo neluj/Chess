@@ -8,10 +8,11 @@ class StateNothingSelected : public State
 {
 
 public:
-    StateNothingSelected(std::shared_ptr<Board> board);
-    void clickOnMovemet(const std::pair<int,int> & position)    override;
-    void clickOnEmptyBoard()                                    override;
-    void clickOnFigure(std::shared_ptr<Figure> figure)          override;
+
+    void clickOnMovemet(std::shared_ptr<const std::pair<int,int>> & clickedPosition)    override;
+    void clickOnEmptyBoard()                                                            override;
+    void clickOnUnselectedFigure(std::shared_ptr<Figure> figure)                        override;
+    void clickOnSelectedFigure()                                                        override;
 };
 
 }
