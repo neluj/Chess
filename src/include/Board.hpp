@@ -37,6 +37,7 @@ public:
     void unselectFigure();
     void moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition);
     const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> getPossibleMovements() const;
+    bool captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition);
 
 
     
