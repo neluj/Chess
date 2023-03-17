@@ -12,8 +12,11 @@ void StateNothingSelected::clickOnMovemet(std::shared_ptr<const std::pair<int,in
 void StateNothingSelected::clickOnEmptyBoard()                                
 {}   
 
-void StateNothingSelected::clickOnFigure(std::shared_ptr<Figure> figure)      
+void StateNothingSelected::clickOnUnselectedFigure(std::shared_ptr<Figure> figure)      
 {
     board->selectFigure(figure);
     board->updateState(new StateFigureSelected);
 }   
+
+void StateNothingSelected::clickOnSelectedFigure()      
+{}   

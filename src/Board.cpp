@@ -111,6 +111,11 @@ State* Board::getState()
     return state;
 }
 
+const std::shared_ptr<const Figure> Board::getSelectedFigure()
+{
+    return selectedFigure;
+}
+
 void Board::selectFigure(std::shared_ptr<Figure> figure)
 {
     selectedFigure = figure;
@@ -130,5 +135,6 @@ void Board::moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & click
 {
     if(selectedFigure != nullptr)
         selectedFigure->updatePosition(clickedPosition->first, clickedPosition->second);
-    possibleMovements->clear();
+    
+    unselectFigure();
 }

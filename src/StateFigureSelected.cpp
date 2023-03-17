@@ -17,8 +17,13 @@ void StateFigureSelected::clickOnEmptyBoard()
     board->updateState(new StateNothingSelected);
 }   
 
-void StateFigureSelected::clickOnFigure(std::shared_ptr<Figure> figure)      
+void StateFigureSelected::clickOnUnselectedFigure(std::shared_ptr<Figure> figure)      
+{
+    board->selectFigure(figure);
+}   
+
+void StateFigureSelected::clickOnSelectedFigure()      
 {
     board->unselectFigure();
     board->updateState(new StateNothingSelected);
-}   
+}  

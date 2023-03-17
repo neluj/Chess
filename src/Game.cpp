@@ -55,33 +55,14 @@ void Game::MainLoop()
 
 void Game::mouseLeftClick(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
-    bool moved = false;
     if (clickedInsideBoard(clickedPosition))
     {
-        auto possibleMovementsIterator = board->getPossibleMovements()->begin();
-        while(!moved && possibleMovementsIterator != board->getPossibleMovements()->end())
+
+        if(!eventClickOnPossibleMovement(clickedPosition))
         {
-            if(((*possibleMovementsIterator)->first == clickedPosition->first) && ((*possibleMovementsIterator)->second == clickedPosition->second))
+            if(!eventClickOnFigure(clickedPosition))
             {
-                board->getState()->clickOnMovemet(clickedPosition);
-                moved = true;
-            }
-            else
-            {
-                ++possibleMovementsIterator;
-            }
-        }
-        if(!moved)
-        {
-            std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
-    
-            if (figure != nullptr)
-            {
-                board->getState()->clickOnFigure(figure);
-            }
-            else
-            {
-                board->getState()->clickOnEmptyBoard();
+                eventClickOnEmptyBoard(clickedPosition);    
             }
         }
     }
@@ -117,4 +98,41 @@ void Game::draw(RenderWindow &window)
     window.draw(boardSprite);
     updateSFMLObjects(window);
     window.display();
+}
+
+bool Game::eventClickOnPossibleMovement(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    for(auto possibleMovement : *board->getPossibleMovements())
+    {
+        if((possibleMovement->first == clickedPosition->first) && (possibleMovement->second == clickedPosition->second))
+        {
+            board->getState()->clickOnMovemet(clickedPosition);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Game::eventClickOnFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
+    
+    if (figure != nullptr)
+    {   
+        if(board->getSelectedFigure() == figure)
+        {
+            board->getState()->clickOnSelectedFigure();
+        }
+        else
+            board->getState()->clickOnUnselectedFigure(figure);
+        return true;
+    }
+    return false;
+}
+
+bool Game::eventClickOnEmptyBoard(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    board->getState()->clickOnEmptyBoard();
+    return true;
 }
