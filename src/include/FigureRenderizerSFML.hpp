@@ -16,7 +16,6 @@ public:
 
 private:
 
-    // TODO hacer con unordered map sprites-figures
     const int           IMAGE_SIZE = 64;
     const std::string   IMAGE_PATH = "images/figures.png";
 
