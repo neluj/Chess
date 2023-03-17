@@ -29,7 +29,7 @@ public:
     void setInitialState();
    
     const std::vector<std::shared_ptr<Figure>> & getFigures() const;
-    std::shared_ptr<Figure> getFigureFromPosition(const std::shared_ptr<std::pair<int,int>> & position) const;
+    std::shared_ptr<Figure> getFigureFromPosition(std::shared_ptr<const std::pair<int,int>> & position) const;
     const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> getPossibleMovements() const;
     // TODO
     const std::shared_ptr<State> getState();
