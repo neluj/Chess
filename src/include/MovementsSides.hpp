@@ -8,7 +8,7 @@ namespace chess
 class MovementsSides
 {
 public:
-    //Returns figure if the movements ends withempassant
+    //Returns figure if the movements ends with capture
 
     std::shared_ptr<std::pair<int,int>> getLeftPosition     (const std::shared_ptr<std::pair<int,int>> & position);
     std::shared_ptr<std::pair<int,int>> getRightPosition    (const std::shared_ptr<std::pair<int,int>> & position);

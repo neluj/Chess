@@ -15,7 +15,7 @@ class MovementsPawn : public Movements
 {
 public:
     MovementsPawn();
-    //Returns figure if the movements ends withempassant
+    //Returns figure if the movements ends with capture
     std::vector<std::shared_ptr<std::pair<int,int>>> getMovements(const std::shared_ptr<Figure> pawn, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 private:
 

@@ -10,7 +10,7 @@ class MovementsKnight : public Movements
 {
 public:
     MovementsKnight();
-    //Returns figure if the movements ends withempassant
+    //Returns figure if the movements ends with capture
     std::vector<std::shared_ptr<std::pair<int,int>>> getMovements(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard) override;
 
 private:
