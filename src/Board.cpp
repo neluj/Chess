@@ -6,10 +6,7 @@
 #include "Queen.hpp"
 #include "Bishop.hpp"
 
-
-// TODO
 #include "StateNothingSelected.hpp"
-
 
 #include <algorithm>
 
@@ -20,7 +17,8 @@ Board::Board(State* newState) : state(nullptr)
 {
     figures.reserve(32);
     possibleMovements = std::make_shared<std::list<std::shared_ptr<const std::pair<int,int>>>>();
-    setInitialState(newState);
+    setInitialState();
+    updateState(newState);
 }
 
 Board::~Board()
@@ -28,7 +26,7 @@ Board::~Board()
     delete state;
 }
 
-void Board::setInitialState(State* newState)
+void Board::setInitialState()
 {
     figures.reserve(32);
 
@@ -70,9 +68,6 @@ void Board::setInitialState(State* newState)
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(5, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(6, 1)));
     figures.push_back(std::make_shared<Pawn>(Figure::BLACK, std::make_shared<std::pair<int, int>>(7, 1)));
-
-    // TODO
-    updateState(newState);
 
 }
 void Board::updateState(State* newState)

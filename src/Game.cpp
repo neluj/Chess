@@ -1,9 +1,9 @@
 #include "Game.hpp"
 #include "Board.hpp"
+
 #include "FigureRenderizerSFML.hpp"
 #include "PossibleMovementsRenderizerSFML.hpp"
 
-// TODO borrar
 #include "Figure.hpp"
 #include "StateNothingSelected.hpp"
 

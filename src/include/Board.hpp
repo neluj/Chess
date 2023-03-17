@@ -9,7 +9,6 @@ namespace chess
 
 
 class Figure;
-// TODO
 class State;
 
 class Board 
@@ -27,11 +26,10 @@ public:
     //e, e, e, e, e, e, e, e
     //P, P, P, P, P, P, P, P
     //R, N, B, Q, K, B, N, R   
-    void setInitialState(State* newState);
+    void setInitialState();
    
     const std::vector<std::shared_ptr<Figure>> & getFigures() const;
     std::shared_ptr<Figure> getFigureFromPosition(std::shared_ptr<const std::pair<int,int>> & position) const;
-    // TODO
     State* getState();
     const std::shared_ptr<const Figure> getSelectedFigure();
     void updateState(State* newState);
@@ -45,9 +43,6 @@ public:
 private:
  
     std::vector<std::shared_ptr<Figure>> figures;
-
-
-    // TODO
     State* state{nullptr};
     std::shared_ptr<Figure> selectedFigure{nullptr};
     std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements; 
