@@ -81,7 +81,7 @@ const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> Boar
     return possibleMovements;
 }
 
-std::shared_ptr<Figure> Board::getFigureFromPosition(const std::shared_ptr<std::pair<int,int>> & position) const
+std::shared_ptr<Figure> Board::getFigureFromPosition(std::shared_ptr<const std::pair<int,int>> & position) const
 {
 
     auto figureIterator = std::find_if (figures.begin(), figures.end(), 

@@ -44,7 +44,8 @@ void Game::MainLoop()
             {
                 if (e.key.code == Mouse::Left)
                 {
-                    mouseLeftClick(pos.x, pos.y);
+                    std::shared_ptr<const std::pair<int, int>> selectedPosition = getBoardPositionFromClicked(pos.x, pos.y);
+                    mouseLeftClick(selectedPosition);
                     draw(window);
                 }
             }
@@ -52,12 +53,12 @@ void Game::MainLoop()
     }
 }
 
-void Game::mouseLeftClick(int x, int y)
+void Game::mouseLeftClick(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
-    if (clickedInsideBoard(x, y))
+    if (clickedInsideBoard(clickedPosition))
     {
-        std::shared_ptr<std::pair<int, int>> selectedPosition = getBoardPositionFromClicked(x, y);
-        std::shared_ptr<Figure> figure = board->getFigureFromPosition(selectedPosition);
+        
+        std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
 
         if (figure != nullptr)
         {
@@ -70,15 +71,15 @@ void Game::mouseLeftClick(int x, int y)
     }
 }
 
-bool Game::clickedInsideBoard(int x, int y)
+bool Game::clickedInsideBoard(std::shared_ptr<const std::pair<int,int>> & clickedPosition) const
 {
-    if (x > BOARD_SIZE_X || y > BOARD_SIZE_Y)
+    if (clickedPosition->first > BOARD_SIZE_X || clickedPosition->second > BOARD_SIZE_Y)
         return false;
 
     return true;
 }
 
-std::shared_ptr<std::pair<int, int>> Game::getBoardPositionFromClicked(int x, int y)
+std::shared_ptr<std::pair<int, int>> Game::getBoardPositionFromClicked(int x, int y) const
 {
     int posX = (x * SQUARES_SIZE) / BOARD_SIZE_X;
     int posY = (y * SQUARES_SIZE) / BOARD_SIZE_Y;
