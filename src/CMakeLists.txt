@@ -1,8 +1,19 @@
 add_library(src
 Game.cpp
 Board.cpp
+Player.cpp
 FigureRenderizerSFML.cpp
 PossibleMovementsRenderizerSFML.cpp
+Figure.cpp
+Rook.cpp
+Pawn.cpp
+King.cpp
+Knight.cpp
+Queen.cpp
+Bishop.cpp
+State.cpp
+StateNothingSelected.cpp
+StateFigureSelected.cpp
 MovementsSides.cpp
 MovementsUpDown.cpp
 MovementsPositionState.cpp
@@ -13,16 +24,7 @@ MovementsQueen.cpp
 MovementsRook.cpp
 MovementsBishop.cpp
 MovementsKing.cpp
-Figure.cpp
-Rook.cpp
-Pawn.cpp
-King.cpp
-Knight.cpp
-Queen.cpp
-Bishop.cpp
-State.cpp
-StateNothingSelected.cpp
-StateFigureSelected.cpp)
+)
 
 target_link_libraries( src PUBLIC ${CONAN_LIBS})
 
