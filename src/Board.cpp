@@ -167,3 +167,44 @@ bool Board::captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPos
     }
     return false;
 }
+
+bool Board::isChecked(const std::shared_ptr<const Player> & player)
+{
+    std::shared_ptr<const std::pair<int,int>> opositeKingPosition;
+
+    bool foundedPosition{false};
+    size_t ind = 0;
+    while(!foundedPosition && ind < figures.size())
+    {
+        auto figure = figures[ind];
+        if(figure->getType() == Figure::KING && figure->getColor() == player->getAsignedFigureColor())
+        {
+            opositeKingPosition = figure->getPosition();
+            foundedPosition = true;
+        }   
+
+        ++ind;
+    }
+
+    if(foundedPosition)
+    {
+        for(auto figure : figures)
+        {
+            if(figure->getColor() != player->getAsignedFigureColor())
+            {
+                auto figurePossibleMovements = figure->getPossibleMovements(figures);
+
+                auto possibleMovementsIterator = std::find_if (
+                    figurePossibleMovements.begin(), figurePossibleMovements.end(), 
+                    [&opositeKingPosition](const std::shared_ptr<const std::pair<int,int>> &possibleMovement)
+                    {return (possibleMovement->first == opositeKingPosition->first && possibleMovement->second == opositeKingPosition->second);}
+                );
+
+                if(possibleMovementsIterator != figurePossibleMovements.end())
+                    return true;
+
+            }
+        }
+    }
+    return false;
+}
