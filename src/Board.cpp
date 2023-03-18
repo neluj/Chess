@@ -127,9 +127,20 @@ void Board::unselectFigure()
 
 //TODO cambiar a state del rival
 void Board::moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
-{
+{   
+    captureFigure(clickedPosition);
     if(selectedFigure != nullptr)
         selectedFigure->updatePosition(clickedPosition->first, clickedPosition->second);
-    
     unselectFigure();
+}
+
+bool Board::captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    std::shared_ptr<Figure> capturedFigure = getFigureFromPosition(clickedPosition);
+    if(capturedFigure != nullptr)
+    {
+        capturedFigure->updatePosition(8,0);
+        return true;
+    }
+    return false;
 }
