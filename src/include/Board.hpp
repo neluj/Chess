@@ -10,6 +10,7 @@ namespace chess
 
 class Figure;
 class State;
+class Player;
 
 class Board 
 {
@@ -33,6 +34,8 @@ public:
     State* getState();
     const std::shared_ptr<const Figure> getSelectedFigure();
     void updateState(State* newState);
+    void updateTurnPlayer();
+    std::shared_ptr<const Player> getTurnPlayer();
     void selectFigure(std::shared_ptr<Figure> figure);
     void unselectFigure();
     void moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition);
@@ -47,6 +50,12 @@ private:
     State* state{nullptr};
     std::shared_ptr<Figure> selectedFigure{nullptr};
     std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements; 
+    std::shared_ptr<const Player> turnPlayer{nullptr};
+
+    std::shared_ptr<Player> playerWhite{nullptr};
+    std::shared_ptr<Player> playerBlack{nullptr};
+
+
 
 };
 

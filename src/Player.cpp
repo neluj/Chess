@@ -20,12 +20,12 @@ Player::Player(Figure::Color figureColor)
 
 }
 
-std::string Player::getName()
+std::string Player::getName() const
 {
     return name;
 }
 
-Figure::Color Player::getAsignedFigureColor()
+Figure::Color Player::getAsignedFigureColor() const
 {
     return asignedFigureColor;
 }

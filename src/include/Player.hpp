@@ -14,8 +14,8 @@ public:
     Player(Figure::Color figureColor, std::string name); 
     Player(Figure::Color figureColor); 
 
-    std::string getName();
-    Figure::Color getAsignedFigureColor();
+    std::string getName() const;
+    Figure::Color getAsignedFigureColor() const;
 
 private:
 

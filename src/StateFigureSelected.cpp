@@ -8,6 +8,8 @@ using namespace chess;
 void StateFigureSelected::clickOnMovemet(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
     board->moveSelectedFigure(clickedPosition);
+    board->unselectFigure();
+    board->updateTurnPlayer();
     board->updateState(new StateNothingSelected);
 }   
 
