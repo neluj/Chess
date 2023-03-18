@@ -6,6 +6,8 @@
 #include "Queen.hpp"
 #include "Bishop.hpp"
 
+#include "Player.hpp"
+
 #include "StateNothingSelected.hpp"
 
 #include <algorithm>
@@ -17,8 +19,14 @@ Board::Board(State* newState) : state(nullptr)
 {
     figures.reserve(32);
     possibleMovements = std::make_shared<std::list<std::shared_ptr<const std::pair<int,int>>>>();
+
+    playerWhite = std::make_shared<Player>(Figure::WHITE);
+    playerBlack = std::make_shared<Player>(Figure::BLACK);
+    turnPlayer = playerWhite;
+
     setInitialState();
     updateState(newState);
+    
 }
 
 Board::~Board()
@@ -119,6 +127,22 @@ void Board::selectFigure(std::shared_ptr<Figure> figure)
     std::copy(vecPossibleMovements.begin(), vecPossibleMovements.end(), std::back_inserter(*possibleMovements));
 }
 
+void Board::updateTurnPlayer()
+{
+    if(turnPlayer == playerWhite)
+    {
+        turnPlayer = playerBlack;
+    }
+    else
+        turnPlayer = playerWhite;
+}
+
+std::shared_ptr<const Player> Board::getTurnPlayer()
+{
+    return turnPlayer;
+}
+
+
 void Board::unselectFigure()
 {
     selectedFigure = nullptr;
@@ -131,7 +155,6 @@ void Board::moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & click
     captureFigure(clickedPosition);
     if(selectedFigure != nullptr)
         selectedFigure->updatePosition(clickedPosition->first, clickedPosition->second);
-    unselectFigure();
 }
 
 bool Board::captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)

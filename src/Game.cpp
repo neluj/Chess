@@ -5,6 +5,7 @@
 #include "PossibleMovementsRenderizerSFML.hpp"
 
 #include "Figure.hpp"
+#include "Player.hpp"
 #include "StateNothingSelected.hpp"
 
 using namespace chess;
@@ -118,7 +119,7 @@ bool Game::eventClickOnFigure(std::shared_ptr<const std::pair<int,int>> & clicke
 {
     std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
     
-    if (figure != nullptr)
+    if (figure != nullptr && figure->getColor() == board->getTurnPlayer()->getAsignedFigureColor())
     {   
         if(board->getSelectedFigure() == figure)
         {
