@@ -15,7 +15,7 @@ MovementsKing::MovementsKing()
     movementsDiagonal = std::make_shared<MovementsDiagonal>();
 }
 
-std::vector<std::shared_ptr<std::pair<int, int>>> MovementsKing::getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> &figuresOnBoard)
+std::vector<std::shared_ptr<std::pair<int, int>>> MovementsKing::getMovements(const std::shared_ptr<Figure> king, const std::vector<std::shared_ptr<Figure>> &figuresOnBoard) 
 {
     std::shared_ptr<std::pair<int, int>> actualPosition = std::make_shared<std::pair<int, int>>(king->getPosition()->first, king->getPosition()->second);
     std::shared_ptr<std::pair<int, int>> movementUp = movementsUpDown->getUpPosition(actualPosition);
@@ -43,7 +43,7 @@ std::vector<std::shared_ptr<std::pair<int, int>>> MovementsKing::getMovements(co
     return movements;
 }
 
-bool MovementsKing::enemysPossibleMovement(const std::shared_ptr<Figure> king, const std::shared_ptr<std::pair<int, int>> &newPosition, const std::vector<std::shared_ptr<Figure>> &figuresOnBoard)
+bool MovementsKing::enemysPossibleCapture(const std::shared_ptr<Figure> king, const std::shared_ptr<std::pair<int, int>> &newPosition, const std::vector<std::shared_ptr<Figure>> &figuresOnBoard)
 {
 
     auto hipoteticFiguresOnBoard = figuresOnBoard;
@@ -69,20 +69,23 @@ bool MovementsKing::enemysPossibleMovement(const std::shared_ptr<Figure> king, c
     // para asegurarse de que solo se llama una vez al rey.
     for (auto figure : hipoteticFiguresOnBoard)
     {
-        if(figure->getType() != Figure::KING)
         if (figure->getColor() != king->getColor())
-        {
-            auto figurePossibleMovements = figure->getPossibleMovements(hipoteticFiguresOnBoard);
+        {   
+            if(figure->getType() != Figure::KING)
+            {
+                auto figurePossibleMovements = figure->getPossibleMovements(hipoteticFiguresOnBoard);
 
-            auto possibleMovementsIterator = std::find_if(
-                figurePossibleMovements.begin(), figurePossibleMovements.end(),
-                [&newPosition](const std::shared_ptr<const std::pair<int, int>> &possibleMovement)
-                { return (possibleMovement->first == newPosition->first && possibleMovement->second == newPosition->second); }
-            );
+                auto possibleMovementsIterator = std::find_if(
+                    figurePossibleMovements.begin(), figurePossibleMovements.end(),
+                    [&newPosition](const std::shared_ptr<const std::pair<int, int>> &possibleMovement)
+                    { return (possibleMovement->first == newPosition->first && possibleMovement->second == newPosition->second); }
+                );
 
-            if (possibleMovementsIterator != figurePossibleMovements.end())
-                return true;
+                if (possibleMovementsIterator != figurePossibleMovements.end())
+                    return true;
+            }
         }
+
     }
     return false;
 }
@@ -95,12 +98,12 @@ void MovementsKing::pushPosition(std::vector<std::shared_ptr<std::pair<int, int>
         if (movementsPositionState->getFigureOnPosition(newPosition, figuresOnBoard) != nullptr)
         {
             if (movementsPositionState->getFigureOnPosition(newPosition, figuresOnBoard)->getColor() != king->getColor())
-                if (!enemysPossibleMovement(king, newPosition, figuresOnBoard))
+                //if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
                     movements.push_back(newPosition);
         }
         else
-            if (!enemysPossibleMovement(king, newPosition, figuresOnBoard))
-            movements.push_back(newPosition);
+            //if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
+                movements.push_back(newPosition);
     }
     
 }       

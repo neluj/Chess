@@ -168,43 +168,119 @@ bool Board::captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPos
     return false;
 }
 
-bool Board::isChecked(const std::shared_ptr<const Player> & player)
+bool Board::isCheckMateded(const std::shared_ptr<const Player> & player) const
 {
-    std::shared_ptr<const std::pair<int,int>> opositeKingPosition;
+    const std::shared_ptr<Figure> heroKing = getPlayersKing(player, figures);
 
-    bool foundedPosition{false};
-    size_t ind = 0;
-    while(!foundedPosition && ind < figures.size())
+    return isCheckMateded(heroKing, figures);
+}
+
+bool Board::isCheckMateded(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
+{
+    for(auto figureIt : figuresSpot)
     {
-        auto figure = figures[ind];
-        if(figure->getType() == Figure::KING && figure->getColor() == player->getAsignedFigureColor())
+        if(figureIt->getColor() == figureHero->getColor())
         {
-            opositeKingPosition = figure->getPosition();
-            foundedPosition = true;
-        }   
+            // Calculates all possible movements for player
+            std::vector<std::vector<std::shared_ptr<Figure>>> hipoteticSpots = hipoteticBoardSpots(figureIt, figuresSpot);
 
-        ++ind;
-    }
-
-    if(foundedPosition)
-    {
-        for(auto figure : figures)
-        {
-            if(figure->getColor() != player->getAsignedFigureColor())
-            {
-                auto figurePossibleMovements = figure->getPossibleMovements(figures);
-
-                auto possibleMovementsIterator = std::find_if (
-                    figurePossibleMovements.begin(), figurePossibleMovements.end(), 
-                    [&opositeKingPosition](const std::shared_ptr<const std::pair<int,int>> &possibleMovement)
-                    {return (possibleMovement->first == opositeKingPosition->first && possibleMovement->second == opositeKingPosition->second);}
-                );
-
-                if(possibleMovementsIterator != figurePossibleMovements.end())
-                    return true;
-
-            }
+            // If there is at least one possible movement where the figure is not check, then the figure is not on checkMate
+            for(auto hSpot : hipoteticSpots)
+            if(!isChecked(figureHero, hSpot))
+                return false;
         }
     }
-    return false;
+    return true;
+}
+
+
+
+bool Board::isChecked(const std::shared_ptr<const Player> & player) const
+{
+
+    const std::shared_ptr<Figure> heroKing = getPlayersKing(player, figures);
+
+    return isChecked(heroKing, figures);
+}
+
+
+bool Board::isChecked(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
+{
+
+    for(auto figureIt : figuresSpot)
+    {
+        if(figureHero->getColor() != figureIt->getColor())
+        {
+            auto figurePossibleMovements = figureIt->getPossibleMovements(figuresSpot);
+
+            auto possibleMovementsIterator = std::find_if (
+                figurePossibleMovements.begin(), figurePossibleMovements.end(), 
+                [&figureHero](const std::shared_ptr<const std::pair<int,int>> &possibleMovement)
+                {return (possibleMovement->first == figureHero->getPosition()->first && possibleMovement->second == figureHero->getPosition()->second);}
+            );
+
+            if(possibleMovementsIterator != figurePossibleMovements.end())
+                return true;
+
+        }
+    }
+    
+    return false;    
+}
+
+
+size_t Board::getFigureIndexOnBoard(const std::shared_ptr< Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
+{
+    size_t figureIndex = -1;
+
+    bool figureIndexFounded{false};
+    size_t figuresCounter = 0;
+    while(!figureIndexFounded && figuresCounter < figuresSpot.size())
+    {
+        auto figure = figuresSpot[figuresCounter];
+        if(figure == figureHero)
+        {
+            figureIndex = figuresCounter;
+            figureIndexFounded = true;
+        }
+
+        figuresCounter++;
+    }
+
+    return figureIndex;
+}
+
+// TODO con esto solo vale para saber si es jaque mate, lo que hay que hacer es para cada movimiento de
+// figura del color propio (no se distingue si es rey), comprobar si es jaque. Si es, es jaque mate.
+std::vector<std::vector<std::shared_ptr<Figure>>> Board::hipoteticBoardSpots(const std::shared_ptr<Figure> & figureToCalculate, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
+{
+    std::vector<std::vector<std::shared_ptr<Figure>>> hipoteticBoardSpots;
+
+    // Find index of the figure on board
+    size_t figureIndex = getFigureIndexOnBoard(figureToCalculate,figuresSpot);
+
+    //For each movement, create a possible spot
+    auto possibleMovements = figureToCalculate->getPossibleMovements(figuresSpot);
+
+    for(auto possibleMov : possibleMovements)
+    {
+        auto hipoteticFiguresOnBoard = figuresSpot;
+        hipoteticFiguresOnBoard[figureIndex]->updatePosition(possibleMov->first, possibleMov->second);
+        hipoteticBoardSpots.push_back(hipoteticFiguresOnBoard);
+    }
+
+    return hipoteticBoardSpots;
+
+}
+
+const std::shared_ptr<Figure> Board::getPlayersKing(const std::shared_ptr<const Player> & player, const std::vector<std::shared_ptr<Figure>> figuresSpot) const
+{
+    for(auto figureIt : figuresSpot)
+    {
+        if(figureIt->getType() == Figure::KING && figureIt->getColor() == player->getAsignedFigureColor())
+        {
+            return figureIt;
+        }   
+    }
+    return nullptr;
 }
