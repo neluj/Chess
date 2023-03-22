@@ -98,11 +98,11 @@ void MovementsKing::pushPosition(std::vector<std::shared_ptr<std::pair<int, int>
         if (movementsPositionState->getFigureOnPosition(newPosition, figuresOnBoard) != nullptr)
         {
             if (movementsPositionState->getFigureOnPosition(newPosition, figuresOnBoard)->getColor() != king->getColor())
-                //if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
+                if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
                     movements.push_back(newPosition);
         }
         else
-            //if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
+            if (!enemysPossibleCapture(king, newPosition, figuresOnBoard))
                 movements.push_back(newPosition);
     }
     

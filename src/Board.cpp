@@ -149,7 +149,6 @@ void Board::unselectFigure()
     possibleMovements->clear();
 }
 
-//TODO cambiar a state del rival
 void Board::moveSelectedFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {   
     captureFigure(clickedPosition);
@@ -177,6 +176,14 @@ bool Board::isCheckMateded(const std::shared_ptr<const Player> & player) const
 
 bool Board::isCheckMateded(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
 {
+    if(isChecked(figureHero,figuresSpot))
+        return canMoveNotCapturing(figureHero,figuresSpot);
+
+    return false;
+}
+
+bool Board::canMoveNotCapturing(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const
+{
     for(auto figureIt : figuresSpot)
     {
         if(figureIt->getColor() == figureHero->getColor())
@@ -186,20 +193,22 @@ bool Board::isCheckMateded(const std::shared_ptr<Figure> & figureHero, const std
 
             // If there is at least one possible movement where the figure is not check, then the figure is not on checkMate
             for(auto hSpot : hipoteticSpots)
-            if(!isChecked(figureHero, hSpot))
-                return false;
+            {
+                if(!isChecked(figureHero, hSpot))
+                    return false;
+            }
+
         }
     }
     return true;
 }
 
 
-
 bool Board::isChecked(const std::shared_ptr<const Player> & player) const
 {
 
     const std::shared_ptr<Figure> heroKing = getPlayersKing(player, figures);
-
+    
     return isChecked(heroKing, figures);
 }
 
@@ -265,7 +274,9 @@ std::vector<std::vector<std::shared_ptr<Figure>>> Board::hipoteticBoardSpots(con
     for(auto possibleMov : possibleMovements)
     {
         auto hipoteticFiguresOnBoard = figuresSpot;
-        hipoteticFiguresOnBoard[figureIndex]->updatePosition(possibleMov->first, possibleMov->second);
+        auto hipoteticFigureOnNewPosition = figureToCalculate->clone();
+        hipoteticFigureOnNewPosition->updatePosition(possibleMov->first, possibleMov->second);
+        hipoteticFiguresOnBoard[figureIndex] = hipoteticFigureOnNewPosition;
         hipoteticBoardSpots.push_back(hipoteticFiguresOnBoard);
     }
 

@@ -48,6 +48,7 @@ public:
     bool isChecked(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
     bool isCheckMateded(const std::shared_ptr<const Player> & player) const;
     bool isCheckMateded(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
+    bool canMoveNotCapturing(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
 
 
 
