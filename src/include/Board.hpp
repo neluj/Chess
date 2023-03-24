@@ -43,8 +43,21 @@ public:
     bool captureFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition);
 
 
+    size_t getFigureIndexOnBoard(const std::shared_ptr< Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
+    bool isChecked(const std::shared_ptr<const Player> & player) const;
+    bool isChecked(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
+    bool isCheckMateded(const std::shared_ptr<const Player> & player) const;
+    bool isCheckMateded(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
+    bool canMoveNotCapturing(const std::shared_ptr<Figure> & figureHero, const std::vector<std::shared_ptr<Figure>> & figuresSpot) const;
+
+
+
+
     
 private:
+
+    std::vector<std::vector<std::shared_ptr<Figure>>> hipoteticBoardSpots(const std::shared_ptr<Figure> & figureToCalculate, const std::vector<std::shared_ptr<Figure>> & figuresSpot ) const;
+    const std::shared_ptr<Figure> getPlayersKing(const std::shared_ptr<const Player> & player, const std::vector<std::shared_ptr<Figure>> figuresSpot) const;
  
     std::vector<std::shared_ptr<Figure>> figures;
     State* state{nullptr};

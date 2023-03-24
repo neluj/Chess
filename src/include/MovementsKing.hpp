@@ -17,6 +17,7 @@ public:
 
 private:
 
+    bool enemysPossibleCapture(const std::shared_ptr<Figure> king, const std::shared_ptr<std::pair<int,int>> & newPosition, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
     void pushPosition(std::vector<std::shared_ptr<std::pair<int,int>>> & movements, const std::shared_ptr<std::pair<int,int>> & newPosition, const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard);
 
     std::shared_ptr<MovementsSides> movementsSides;
