@@ -25,17 +25,17 @@ std::vector<std::shared_ptr<std::pair<int,int>>> onDeep(const std::shared_ptr<Mo
     MovementsPositionState positionState;
     while(positionState.positionExist(newPosition) && !positionState.isTeamFigureOnPosition(figure, figuresOnBoard, newPosition) && capture==false)
     {
-        onDeep.push_back(newPosition);
-        hitoteticFigure->updatePosition(newPosition->first, newPosition->second);
-        hipoteticPosition = std::make_shared<std::pair<int,int>>(hitoteticFigure->getPosition()->first, hitoteticFigure->getPosition()->second);
-        newPosition = ((*movementType).*MovementMethod)(hipoteticPosition);
         std::shared_ptr<Figure> figureOnNewPosition = positionState.getFigureOnPosition(newPosition, figuresOnBoard);
         if(figureOnNewPosition != nullptr)
         if(figureOnNewPosition->getColor() != figure->getColor())
         {
-            onDeep.push_back(newPosition);
             capture = true;
         }
+        onDeep.push_back(newPosition);
+        hitoteticFigure->updatePosition(newPosition->first, newPosition->second);
+        hipoteticPosition = std::make_shared<std::pair<int,int>>(hitoteticFigure->getPosition()->first, hitoteticFigure->getPosition()->second);
+        newPosition = ((*movementType).*MovementMethod)(hipoteticPosition);
+
     }    
     return onDeep; 
 }
