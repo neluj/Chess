@@ -1,13 +1,13 @@
 Chess
 =============================
-- [Setup Environment](#setup-environment)
+- [Environment Setup](#environment-setup)
 	- [Operating System](#operating-system)
 	- [Build essential tools](#build-essential-tools)
 	- [Dependencies](#dependencies)
 ----------------------------------
 
 
-# Setup Environment
+# Environment Setup
 
 ### Operating System
 
@@ -34,7 +34,7 @@ Compiler version checked:
 
 * `gcc 11.3.0`
 
-**NOTE:** This gcc version (GCC compiler>5.1) requires some configuration if recomended conan is used. This configurations are explained on [Dependencies](#dependencies).
+**NOTE:** This gcc version (GCC compiler>5.1) requires some configuration if recomended conan is used. These configurations are explained on [Dependencies](#dependencies).
 
 To install basic build essentials, like `gcc`, `g++` and `make`, on wsl with `Ubuntu-22.04`, follow those steps:
 
