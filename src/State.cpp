@@ -1,5 +1,9 @@
 #include "State.hpp"
 
-State::State(std::shared_ptr<Board> board) :
-    board(board)
-{}
+using namespace chess;
+
+
+void State::setBoard(Board *board)
+{
+    this->board = board;
+}

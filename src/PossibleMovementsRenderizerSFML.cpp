@@ -1,5 +1,8 @@
 #include "PossibleMovementsRenderizerSFML.hpp"
 
+using namespace chess;
+
+
 PossibleMovementsRenderizerSFML::PossibleMovementsRenderizerSFML(const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>>  possibleMovements) :
     possibleMovements(possibleMovements)
 {

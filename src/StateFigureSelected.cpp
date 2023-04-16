@@ -1,19 +1,31 @@
 #include "StateFigureSelected.hpp"
+#include "StateNothingSelected.hpp"
 #include "Board.hpp"
 
-StateFigureSelected::StateFigureSelected(std::shared_ptr<Board> board) :
-    State::State(board)
-{}
+using namespace chess;
 
-void StateFigureSelected::clickOnMovemet(const std::pair<int,int> & position)
+
+void StateFigureSelected::clickOnMovemet(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
-    board->moveSelectedFigure(position);
+    board->moveSelectedFigure(clickedPosition);
+    board->unselectFigure();
+    board->updateTurnPlayer();
+    board->updateState(new StateNothingSelected);
 }   
 
 void StateFigureSelected::clickOnEmptyBoard()                                
-{}   
-
-void StateFigureSelected::clickOnFigure(std::shared_ptr<Figure> figure)      
 {
     board->unselectFigure();
+    board->updateState(new StateNothingSelected);
 }   
+
+void StateFigureSelected::clickOnUnselectedFigure(std::shared_ptr<Figure> figure)      
+{
+    board->selectFigure(figure);
+}   
+
+void StateFigureSelected::clickOnSelectedFigure()      
+{
+    board->unselectFigure();
+    board->updateState(new StateNothingSelected);
+}  

@@ -2,6 +2,8 @@
 #include <utility>
 #include "RenderizerSFML.hpp"
 
+namespace chess
+{
 
 class Board;
 
@@ -14,11 +16,15 @@ public:
 
 private:
 
-    void mouseLeftClick(int x, int y);
-    bool clickedInsideBoard(int x, int y);
-    std::shared_ptr<std::pair<int,int>> getBoardPositionFromClicked(int x, int y);
+    void mouseLeftClick(std::shared_ptr<const std::pair<int,int>> & clickedPosition) ;
+    bool clickedInsideBoard(std::shared_ptr<const std::pair<int,int>> & clickedPosition) const;
+    std::shared_ptr<std::pair<int,int>> getBoardPositionFromClicked(int x, int y) const;
     void updateSFMLObjects(RenderWindow & window);
     void draw(RenderWindow & window);
+
+    bool eventClickOnPossibleMovement   (std::shared_ptr<const std::pair<int,int>> & clickedPosition);
+    bool eventClickOnFigure             (std::shared_ptr<const std::pair<int,int>> & clickedPosition);
+    bool eventClickOnEmptyBoard         (std::shared_ptr<const std::pair<int,int>> & clickedPosition);
     
     Sprite boardSprite;
     Texture boardTexture;
@@ -26,3 +32,5 @@ private:
     std::vector< std::shared_ptr<RenderizerSFML> > renderizers;
 
 };
+
+}

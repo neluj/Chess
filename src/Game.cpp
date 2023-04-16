@@ -1,11 +1,15 @@
 #include "Game.hpp"
 #include "Board.hpp"
+
 #include "FigureRenderizerSFML.hpp"
 #include "PossibleMovementsRenderizerSFML.hpp"
 
-// TODO borrar
 #include "Figure.hpp"
-#include "State.hpp"
+#include "Player.hpp"
+#include "StateNothingSelected.hpp"
+
+using namespace chess;
+
 
 const unsigned int BOARD_SIZE_X = 512;
 const unsigned int BOARD_SIZE_Y = 512;
@@ -14,7 +18,7 @@ const unsigned short SQUARES_SIZE = 8;
 
 Game::Game()
 {
-    board = std::make_shared<Board>();
+    board = std::make_shared<Board>(new StateNothingSelected);
     renderizers.push_back(std::make_shared<FigureRenderizerSFML>(board->getFigures()));
     renderizers.push_back(std::make_shared<PossibleMovementsRenderizerSFML>(board->getPossibleMovements()));
 }
@@ -41,7 +45,8 @@ void Game::MainLoop()
             {
                 if (e.key.code == Mouse::Left)
                 {
-                    mouseLeftClick(pos.x, pos.y);
+                    std::shared_ptr<const std::pair<int, int>> selectedPosition = getBoardPositionFromClicked(pos.x, pos.y);
+                    mouseLeftClick(selectedPosition);
                     draw(window);
                 }
             }
@@ -49,33 +54,30 @@ void Game::MainLoop()
     }
 }
 
-void Game::mouseLeftClick(int x, int y)
+void Game::mouseLeftClick(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
 {
-    if (clickedInsideBoard(x, y))
+    if (clickedInsideBoard(clickedPosition))
     {
-        std::shared_ptr<std::pair<int, int>> selectedPosition = getBoardPositionFromClicked(x, y);
-        std::shared_ptr<Figure> figure = board->getFigureFromPosition(selectedPosition);
 
-        if (figure != nullptr)
+        if(!eventClickOnPossibleMovement(clickedPosition))
         {
-            board->getState()->clickOnFigure(figure);
-        }
-        else
-        {
-            board->getState()->clickOnEmptyBoard();
+            if(!eventClickOnFigure(clickedPosition))
+            {
+                eventClickOnEmptyBoard(clickedPosition);    
+            }
         }
     }
 }
 
-bool Game::clickedInsideBoard(int x, int y)
+bool Game::clickedInsideBoard(std::shared_ptr<const std::pair<int,int>> & clickedPosition) const
 {
-    if (x > BOARD_SIZE_X || y > BOARD_SIZE_Y)
+    if (clickedPosition->first > BOARD_SIZE_X || clickedPosition->second > BOARD_SIZE_Y)
         return false;
 
     return true;
 }
 
-std::shared_ptr<std::pair<int, int>> Game::getBoardPositionFromClicked(int x, int y)
+std::shared_ptr<std::pair<int, int>> Game::getBoardPositionFromClicked(int x, int y) const
 {
     int posX = (x * SQUARES_SIZE) / BOARD_SIZE_X;
     int posY = (y * SQUARES_SIZE) / BOARD_SIZE_Y;
@@ -97,4 +99,41 @@ void Game::draw(RenderWindow &window)
     window.draw(boardSprite);
     updateSFMLObjects(window);
     window.display();
+}
+
+bool Game::eventClickOnPossibleMovement(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    for(auto possibleMovement : *board->getPossibleMovements())
+    {
+        if((possibleMovement->first == clickedPosition->first) && (possibleMovement->second == clickedPosition->second))
+        {
+            board->getState()->clickOnMovemet(clickedPosition);
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Game::eventClickOnFigure(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    std::shared_ptr<Figure> figure = board->getFigureFromPosition(clickedPosition);
+    
+    if (figure != nullptr && figure->getColor() == board->getTurnPlayer()->getAsignedFigureColor())
+    {   
+        if(board->getSelectedFigure() == figure)
+        {
+            board->getState()->clickOnSelectedFigure();
+        }
+        else
+            board->getState()->clickOnUnselectedFigure(figure);
+        return true;
+    }
+    return false;
+}
+
+bool Game::eventClickOnEmptyBoard(std::shared_ptr<const std::pair<int,int>> & clickedPosition)
+{
+    board->getState()->clickOnEmptyBoard();
+    return true;
 }

@@ -2,6 +2,8 @@
 #include "MovementsPositionState.hpp"
 #include "Knight.hpp"
 
+using namespace chess;
+
 MovementsKnight::MovementsKnight()
 {
     movementsPositionState = std::make_shared<MovementsPositionState>();

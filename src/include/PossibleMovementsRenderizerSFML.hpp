@@ -2,6 +2,9 @@
 #include "RenderizerSFML.hpp"
 #include <list>
 
+namespace chess
+{
+
 
 class PossibleMovementsRenderizerSFML : public RenderizerSFML
 {
@@ -18,3 +21,5 @@ private:
     const std::shared_ptr<std::list<std::shared_ptr<const std::pair<int,int>>>> possibleMovements;
 
 };
+
+}

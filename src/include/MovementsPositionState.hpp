@@ -2,6 +2,9 @@
 #include <vector>
 #include "Figure.hpp"
 
+namespace chess
+{
+
 class MovementsPositionState
 {
 
@@ -14,3 +17,5 @@ public:
     bool isTeamFigureOnPosition (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::shared_ptr<std::pair<int,int>> & calculatedPosition);
 
 };
+
+}
