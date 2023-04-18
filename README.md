@@ -19,7 +19,7 @@ To install, on `Powershell`:
 
 1. Install `WSL`
 
-2. To install `Ubuntu-22.04`, first list available distros: 
+2. Then, install `Ubuntu-22.04`. For that. list available distros: 
 ```bash
 wsl --list --online
 ```
@@ -34,7 +34,7 @@ Compiler version checked:
 
 * `gcc 11.3.0`
 
-**NOTE:** This gcc version (GCC compiler>5.1) requires some configuration if recomended conan is used. These configurations are explained on [Dependencies](#dependencies).
+**NOTE:** This gcc version (GCC compiler>5.1) requires some configuration if recomended `Conan` is used. These configurations are explained on [Dependencies](#dependencies).
 
 To install basic build essentials, like `gcc`, `g++` and `make`, on wsl with `Ubuntu-22.04`, follow those steps:
 
@@ -46,7 +46,7 @@ sudo apt update
 ```bash
 sudo apt install build-essential
 ```
-3. Optionally, can also install manual pages:
+3. Optionally, manual pages also can be installed:
 ```bash
 sudo apt-get install manpages-dev
 ```
