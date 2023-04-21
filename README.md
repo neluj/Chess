@@ -1,9 +1,11 @@
-Chess
+♟Chess
 =============================
 - [Environment Setup](#environment-setup)
 	- [Operating System](#operating-system)
 	- [Build essential tools](#build-essential-tools)
 	- [Dependencies](#dependencies)
+		-[Conan](#Conan)
+		-[Vcpkg](#Vcpkg)
 ----------------------------------
 
 
@@ -56,7 +58,7 @@ For compile using `CMake`, is needed to install as well:
 sudo apt install cmake
 ```
 
-### Dependencies
+### 📦Dependencies
 
 This project has external dependencies with the following libraries:
 
@@ -64,7 +66,11 @@ This project has external dependencies with the following libraries:
 
 * `gtest`, version used is `cci.20210126`.
 
-However, they can be automatically installed using `Conan`. For that, is nessecary to have `Conan` installed. For this project is used `Conan 1`, specifically the version `Conan 1.59`.
+However, we have multiple package managers that make our work easier. In this section, we propose two of them, of which a simple explanation is provided to use them to deploy the project `In this section, we propose two of them, of which a simple explanation is provided to use them to deploy the project. You can use either one.
+
+
+#### [Conan](https://conan.io/)
+First package manager that we propose, is `Conan`, For that, is nessecary to have `Conan` installed. For this proyect, we propose `Conan 1`, specifically the version `Conan 1.59`.
 
 For install it, follow the next steps:
 
