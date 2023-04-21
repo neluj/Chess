@@ -4,8 +4,8 @@
 	- [Operating System](#operating-system)
 	- [Build essential tools](#build-essential-tools)
 	- [Dependencies](#dependencies)
-		-[Conan](#Conan)
-		-[Vcpkg](#Vcpkg)
+		- [Conan](#Conan)
+		- [Vcpkg](#Vcpkg)
 ----------------------------------
 
 
