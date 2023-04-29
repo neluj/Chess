@@ -19,8 +19,10 @@ This project has been depeloped and tested under the followings SO:
 
 To install, on `Powershell`:
 
-1. Install `WSL`
-
+1. Install `WSL`:
+```bash
+wsl --install
+```
 2. Then, install `Ubuntu-22.04`. For that. list available distros: 
 ```bash
 wsl --list --online
