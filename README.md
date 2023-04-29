@@ -19,7 +19,7 @@ This project has been depeloped and tested under the followings SO:
 
 To install, on `Powershell`:
 
-1. Install `WSL`:
+1. Install `WSL` (necessary to restart Windows):
 ```bash
 wsl --install
 ```
