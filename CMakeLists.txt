@@ -5,13 +5,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 project(Chess)
 
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup(NO_OUTPUT_DIRS)
+#Uncoment if Conan is used
+#include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+#conan_basic_setup(NO_OUTPUT_DIRS)
 
 enable_testing()
 
 add_subdirectory(src)
-add_subdirectory(test)
+#add_subdirectory(test)
 
 add_executable(${PROJECT_NAME} 
 main.cpp)

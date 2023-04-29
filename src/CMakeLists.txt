@@ -26,7 +26,13 @@ MovementsBishop.cpp
 MovementsKing.cpp
 )
 
-target_link_libraries( src PUBLIC ${CONAN_LIBS})
+#Uncoment if Conan is used
+#target_link_libraries( src PUBLIC ${CONAN_LIBS})
+
+if(UNIX)
+find_package(SFML 2.5.1 COMPONENTS window graphics REQUIRED)
+target_link_libraries( src PUBLIC sfml-window sfml-graphics)
+endif (UNIX)
 
 file(COPY
 images
