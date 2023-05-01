@@ -4,6 +4,7 @@
 	- [Operating System](#operating-system)
 	- [Build essential tools](#build-essential-tools)
 	- [Dependencies](#dependencies)
+		- [Linux](#linux)
 		- [Conan](#Conan)
 		- [Vcpkg](#Vcpkg)
 ----------------------------------
@@ -66,10 +67,15 @@ This project has external dependencies with the following libraries:
 
 * `sfml`, version used is `2.5.1`.
 
-* `gtest`, version used is `cci.20210126`.
+* `gtest`.
 
 However, we have multiple package managers that make our work easier. In this section, we propose two of them, of which a simple explanation is provided to use them to deploy the project `In this section, we propose two of them, of which a simple explanation is provided to use them to deploy the project. You can use either one.
 
+#### 🐧Linux
+
+For linux environments, GTest is going to be downloaded and compiled automaticaly with cmake. Just update `GIT_TAG` value on `test/CMakeFiles.txt` file.
+
+For install `sfml`, follow [oficial documentation](https://www.sfml-dev.org/tutorials/2.5/start-linux.php).
 
 #### [Conan](https://conan.io/)
 First package manager that we propose, is `Conan`, For that, is nessecary to have `Conan` installed. For this proyect, we propose `Conan 1`, specifically the version `Conan 1.59`.
@@ -126,3 +132,4 @@ conan profile new default --detect
 ```
 
 For more details, also can visit [Conan documentation, Getting Started section.](https://docs.conan.io/1/getting_started.html#an-md5-hash-calculator-using-the-poco-libraries)
+
