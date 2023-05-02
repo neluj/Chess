@@ -20,6 +20,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(${PROJECT_NAME}-test 
 MovementsFigures.cpp
+MovementsUpDown.cpp
 )
 #Coment if Conan is used
 target_link_libraries(${PROJECT_NAME}-test  gtest_main gmock_main src)
