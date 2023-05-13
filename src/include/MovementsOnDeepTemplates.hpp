@@ -10,7 +10,6 @@ namespace chess
 //1.-the end of the board,
 //2.-A team mate is founded,
 //3.-An enemy is founded and it captured,
-//TODO refactorizar nombres y metodo
 template<typename MovementType, std::shared_ptr<std::pair<int,int>>(MovementType::*MovementMethod)(const std::shared_ptr<std::pair<int,int>> & )>
 std::vector<std::shared_ptr<std::pair<int,int>>> onDeep(const std::shared_ptr<MovementType> movementType, const std::shared_ptr<const Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard)
 {
