@@ -30,7 +30,7 @@ bool MovementsPositionState::isFree          (const std::shared_ptr<std::pair<in
     return false;
 }
 
-bool MovementsPositionState::isEnemyFigureOnPosition(const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::shared_ptr<std::pair<int,int>> & calculatedPosition)
+bool MovementsPositionState::isEnemyFigureOnPosition(const std::shared_ptr<const Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::shared_ptr<std::pair<int,int>> & calculatedPosition)
 {
     std::shared_ptr<Figure> figureOnPosition = getFigureOnPosition(calculatedPosition, figuresOnBoard);
     if(isFree(calculatedPosition, figuresOnBoard))
@@ -39,7 +39,7 @@ bool MovementsPositionState::isEnemyFigureOnPosition(const std::shared_ptr<Figur
         return true;
     return false;
 }
-bool MovementsPositionState::isTeamFigureOnPosition (const std::shared_ptr<Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::shared_ptr<std::pair<int,int>> & calculatedPosition)
+bool MovementsPositionState::isTeamFigureOnPosition (const std::shared_ptr<const Figure> figure, const std::vector<std::shared_ptr<Figure>> & figuresOnBoard, const std::shared_ptr<std::pair<int,int>> & calculatedPosition)
 {
     std::shared_ptr<Figure> figureOnPosition = getFigureOnPosition(calculatedPosition, figuresOnBoard);
     if(isFree(calculatedPosition, figuresOnBoard))

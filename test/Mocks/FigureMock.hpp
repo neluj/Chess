@@ -9,6 +9,10 @@ using namespace chess;
 class FigureMock : public Figure
 {   
 public:
+
+    FigureMock(const Color & color, const std::shared_ptr<std::pair<int, int>> & pos):
+    Figure::Figure(color, Type::KING, pos){}
+
     MOCK_METHOD((std::vector<std::shared_ptr<std::pair<int,int>>>),   getPossibleMovements,   
     (const std::vector<std::shared_ptr<Figure>> &),  (override)  );
 
