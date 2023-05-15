@@ -1,5 +1,6 @@
 add_library(src
 Game.cpp
+Square.cpp
 Board.cpp
 Player.cpp
 FigureRenderizerSFML.cpp

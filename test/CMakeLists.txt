@@ -18,7 +18,8 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 ###############
 
-add_executable(${PROJECT_NAME}-test 
+add_executable(${PROJECT_NAME}-test
+Square.cpp 
 MovementsFigures.cpp
 MovementsUpDown.cpp
 MovementsSides.cpp
